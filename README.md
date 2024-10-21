@@ -5,7 +5,7 @@ An Interface for Cooking Instruction
 - Emily Kiddle
 - Vitaliy
 - Marwan
-- Minori Olguien 
+- Minori Olguin 
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
