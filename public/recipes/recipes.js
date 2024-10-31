@@ -90,7 +90,7 @@ const recipes = [
       author: "",
       type: "dessert",
       level: "intermediate",
-      image: "",
+      image: "/recipes/pumpkinPie.jpg",
       video: "",
       ingredients: [
         {
@@ -120,7 +120,7 @@ const recipes = [
       author: "",
       type: "entree",
       level: "advanced",
-      image: "",
+      image: "/recipes/chickenCurry.jpg",
       video: "",
       ingredients: [
         {
@@ -145,7 +145,7 @@ const recipes = [
       author: "",
       type: "appetizer",
       level: "beginner",
-      image: "",
+      image: "/recipes/garlicBread.jpg",
       video: "",
       ingredients: [
         {
@@ -169,7 +169,7 @@ const recipes = [
       author: "",
       type: "dessert",
       level: "beginner",
-      image: "",
+      image: "/recipes/fruitSalad.jpg",
       video: "",
       ingredients: [
         {
@@ -192,7 +192,7 @@ const recipes = [
       author: "",
       type: "entree",
       level: "intermediate",
-      image: "",
+      image: "/recipes/meatLoaf.jpg",
       video: "",
       ingredients: [
         {
@@ -221,7 +221,7 @@ const recipes = [
         name: "Beef Wellington",
         type: "entree",
         level: "advanced",
-        image: "", // Path to image goes here
+        image: "/recipes/beefWellington.jpg", // Path to image goes here
         video: "", // Path to video goes here
         portions: 6,
         ingredients: [
