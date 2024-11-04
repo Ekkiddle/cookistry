@@ -1,10 +1,12 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect } from 'react';
+import { IoIosArrowBack } from "react-icons/io";
 import NavBar from './navbar';
 import IngredientList from './IngredientList';
 import StepsList from './StepsList';
 import RecipeSummary from './RecipeSummary';
+import IngredientDrawer from "./IngredientDrawer";
 
 function RecipePage() {
 
@@ -43,83 +45,79 @@ function RecipePage() {
     { number: 8, instruction: "Return to the oven, and bake until no longer pink inside, 45 to 75 more minutes. An instant-read thermometer inserted into the thickest part of the loaf should read at least 160 degrees F (70 degrees C), so start checking at 45 minutes and continue baking until meatloaf reaches that temperature. Cooking time will depend on shape and thickness of the meatloaf." },
     { number: 9, instruction: "Serve hot and enjoy!" }]
 
+    const [isVisible, setIsVisible] = useState(false);
+    const [threshold, setThreshold] = useState(300); // default threshold
 
-    const ScrollComponent = () => {
-        const [isVisible, setIsVisible] = useState(false);
-        const [threshold, setThreshold] = useState(300); // default threshold
+    useEffect(() => {
+        // Set threshold based on screen width (e.g., smaller for mobile)
+        const updateThreshold = () => {
+            if (window.innerWidth < 768) {
+                setThreshold(150); // Mobile threshold
+            } else {
+                setThreshold(300); // Desktop threshold
+            }
+        };
 
-        useEffect(() => {
-            // Set threshold based on screen width (e.g., smaller for mobile)
-            const updateThreshold = () => {
-                if (window.innerWidth < 768) {
-                    setThreshold(150); // Mobile threshold
-                } else {
-                    setThreshold(300); // Desktop threshold
-                }
-            };
+        updateThreshold(); // Set initial threshold
+        window.addEventListener('resize', updateThreshold); // Update on window resize
 
-            updateThreshold(); // Set initial threshold
-            window.addEventListener('resize', updateThreshold); // Update on window resize
+        const handleScroll = () => {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > threshold) {
+                setIsVisible(true);
+            } else {
+                setIsVisible(false);
+            }
+        };
 
-            const handleScroll = () => {
-                const scrollPosition = window.scrollY;
-                if (scrollPosition > threshold) {
-                    setIsVisible(true);
-                } else {
-                    setIsVisible(false);
-                }
-            };
+        window.addEventListener('scroll', handleScroll);
 
-            window.addEventListener('scroll', handleScroll);
+        // Cleanup listeners on unmount
+        return () => {
+            window.removeEventListener('resize', updateThreshold);
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [threshold]); // Re-run effect if threshold changes
 
-            // Cleanup listeners on unmount
-            return () => {
-                window.removeEventListener('resize', updateThreshold);
-                window.removeEventListener('scroll', handleScroll);
-            };
-        }, [threshold]); }// Re-run effect if threshold changes
+    return (
+        <div>
+            <nav className="fixed top-0 w-full">
+                <NavBar />
+            </nav>
 
-        return (
-            <div className="bg-gradient-to-b from-[#fcda9d] to-[#f7dfb5] min-h-screen">
-                <nav className="fixed top-0 w-full">
-                    <NavBar />
-                </nav>
-
-                <div>
-                    {isVisible ? (
-                        <div className="fixed bottom-4 right-4 p-4 bg-blue-500 text-white">
-                            <IngredientDrawer />
-                        </div>
-                    ) : <div></div>}
-                    <div className="text-gray-800 max-w-4xl mx-auto px-4 mt-20 md:mt-12">
-                        <div className="max-w-4xl mx-auto bg-white px-6 py-8 mt-8 shadow-lg">
-                            <div className="flex flex-row justify-between items-start">
-                                <div className="flex flex-col">
-                                    <RecipeSummary
-                                        recipeTitle={recipeTitle}
-                                        recipeAuthor={recipeAuthor}
-                                        recipeLevel={recipeLevel}
-                                        recipeType={recipeType} />
-                                </div>
-                                <Link href={"/"} >
-                                    <u className="text-sm text-color4 hover:text-color3">Back to Search</u>
-                                </Link>
-                            </div>
-                            <IngredientList
-                                ingredients={meatloafIngredients}
-                                secondaryIngredients={meatloafGlazeIngredients}
-                                category="Ingredients"
-                                subcategory1="Meatloaf Ingredients"
-                                subcategory2="Glaze Ingredients" />
-                            <StepsList
-                                steps={meatloafSteps}
-                                category="Instructions" />
-                        </div>
+            <div>
+                {isVisible ? (
+                    <div className="fixed bottom-4 right-4 p-4 bg-blue-500 text-white">
+                        <IngredientDrawer />
+                    </div>
+                ) : <div></div>}
+                <div className="text-gray-800 max-w-4xl mx-auto px-4 mt-20 md:mt-12">
+                    <div className="max-w-4xl mx-auto bg-white px-6 py-8 mt-8 shadow-lg">
+                        <Link href={"/"} className="text-sm text-color4 hover:text-colour3">
+                            <u className="flex flex-row ">
+                                <IoIosArrowBack />Back to Search
+                            </u>
+                        </Link>
+                        <RecipeSummary
+                            recipeTitle={recipeTitle}
+                            recipeAuthor={recipeAuthor}
+                            recipeLevel={recipeLevel}
+                            recipeType={recipeType} />
+                        <IngredientList
+                            ingredients={meatloafIngredients}
+                            secondaryIngredients={meatloafGlazeIngredients}
+                            category="Ingredients"
+                            subcategory1="Meatloaf Ingredients"
+                            subcategory2="Glaze Ingredients" />
+                        <StepsList
+                            steps={meatloafSteps}
+                            category="Instructions" />
                     </div>
                 </div>
             </div>
-        );
-    }
-    
+        </div>
+    );
+}
 
-    export default RecipePage
+
+export default RecipePage

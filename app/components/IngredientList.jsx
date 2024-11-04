@@ -25,7 +25,7 @@ function IngredientList(props) {
         <div className="flex flex-row">
             <button
                 type="button"
-                class="text-gray-900 bg-white 
+                className="text-gray-900 bg-white 
                     border border-gray-300 
                     focus:outline-none hover:bg-gray-100 
                     focus:ring-4 focus:ring-gray-100 font-medium rounded-lg 
@@ -38,7 +38,7 @@ function IngredientList(props) {
             </button>
             <button
                 type="button"
-                class="text-gray-900 bg-white 
+                className="text-gray-900 bg-white 
                     border border-gray-300 
                     focus:outline-none hover:bg-gray-100 
                     focus:ring-4 focus:ring-gray-100 font-medium rounded-lg 
@@ -51,7 +51,7 @@ function IngredientList(props) {
             </button>
             <button
                 type="button"
-                class="text-gray-900 bg-white 
+                className="text-gray-900 bg-white 
                     border border-gray-300 
                     focus:outline-none hover:bg-gray-100 
                     focus:ring-4 focus:ring-gray-100 font-medium rounded-lg 

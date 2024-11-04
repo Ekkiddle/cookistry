@@ -4,7 +4,7 @@ function RecipeSummary(props) {
     const recipeAuthor = props.recipeAuthor;
     const recipeLevel = props.recipeLevel;
     const recipeType = props.recipeType;
-    const recipeImage = "meatloaf.jpg";
+    const recipeImage = "/recipes/meatLoaf.jpg";
     const imgDescription = props.imgDescription;
 
     return (
