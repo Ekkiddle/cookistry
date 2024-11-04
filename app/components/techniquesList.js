@@ -1,56 +1,60 @@
 import TechniquesCard from "./techniquesCard"
 import techniques from '@/public/techniques/techniques'
 
-const SORTED_TECHNIQUES = [
-  { sort: "level",
-    category: "beginner",
-    techniques: techniques.filter(tech => tech.level === "beginner")
-  },
-  { sort: "level",
-    category: "intermediate",
-    techniques: techniques.filter(tech => tech.level === "intermediate")
-  },
-  { sort: "level",
-    category: "advanced",
-    techniques: techniques.filter(tech => tech.level === "advanced")
-  }
-]
 
-export default function TechniquesList() {
+export default function TechniquesList({sortBy}) {
+  const SORT_MODES = {
+    level: ['beginner', 'intermediate', 'advanced'],
+    title: undefined
+  }
+
+  // sort techniques according to sort mode
+  if (SORT_MODES[sortBy] === undefined) {
+    // sort alphabetically by the sortBy field in the techniques list
+    var sorted_techniques = [...techniques].sort((a,b) => {
+      if (a[sortBy] < b[sortBy]) return -1
+      else if (a[sortBy] > b[sortBy]) return 1
+      else return 0
+    })
+  } else {
+    // sort by the categories in that sort mode list
+    var sorted_techniques = [...techniques].sort((a,b) => {
+      return SORT_MODES[sortBy].indexOf(a[sortBy]) - SORT_MODES[sortBy].indexOf(b[sortBy]);
+    })
+  }
+
+  // group techniques according to sort mode
+  const grouped_techniques = sorted_techniques.reduce((acc, technique) => {
+    let group = ""
+    if (SORT_MODES[sortBy] === undefined) {
+      group = technique[sortBy].charAt(0).toUpperCase();
+    } else {
+      group = technique[sortBy];
+    }
+    if (!acc[group]) {
+      acc[group] = [];
+    }
+    acc[group].push(technique);
+    return acc;
+  }, {});
+
   return(
     <div className="flex flex-col gap-3 bg-colour5">
-      <div className="flex justify-between p-2 lg:px-5">
-        <h1 className="text-3xl font-bold text-colour1">Techniques</h1>
-        <div className="flex my-auto">
-          <label htmlFor="sort" className="pr-1.5 my-auto text-colour1">Sort by</label>
-          <select name="sort" id="sort" className="p-1 text-colour2 bg-colour4 rounded-md">
-            <option value="level">Level</option>
-            <option value="name">Name</option>
-          </select>
-        </div>
-      </div>
       {
-        SORTED_TECHNIQUES.map(cat =>
-          {return cat.techniques.length > 0 ?
-            (
-              <div key={cat.category}>
-                <h1 className="sticky top-24 md:top-12 p-1 pl-6 text-xl font-bold bg-colour2 text-colour4">
-                  {cat.category.toUpperCase()}
-                </h1>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
-                  {cat.techniques.map(technique =>
-                    <TechniquesCard
-                      image={technique.image}
-                      imageAlt={technique.imageAlt}
-                      title={technique.title}
-                      summary={technique.summary}
-                      nav={technique.nav} />
-                  )}
-                </div>
-              </div>
-            ):(<div key={cat.category} hidden></div>)
-          }
-        )
+        Object.keys(grouped_techniques).map((group => (
+          <div key={group}>
+            <h2 className="sticky top-24 md:top-12 p-1 pl-6 text-xl font-bold bg-colour2 text-colour4">
+              {group.toUpperCase()}
+            </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
+              {
+                grouped_techniques[group].map((technique) => (
+                  <TechniquesCard technique={technique} />
+                ))
+              }
+            </div>
+          </div>
+        )))
       }
     </div>
   );

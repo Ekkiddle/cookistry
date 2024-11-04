@@ -1,12 +1,36 @@
+"use client"
+
+import NavBar from "../components/Navbar";
 import TechniquesList from "../components/techniquesList";
-import NavBar from "../components/navbar";
+import { useState } from "react";
 
 export default function Page() {
+  const [sortMode, setSortMode] = useState("level");
+
+  const handleChange = (e) => {
+    setSortMode(e.target.value);
+  }
+
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
       <div className="z-10"><NavBar /></div>
-      <div className="w-full h-28 md:h-16"></div>
-      <div className="z-0"><TechniquesList /></div>
+      <div className="flex justify-between pt-28 md:pt-16 pb-2 px-5">
+        <h1 className="text-3xl font-bold text-colour1">
+          Techniques
+        </h1>
+        <div className="flex my-auto">
+          <label htmlFor="sort" className="pr-1.5 my-auto text-colour1">
+            Sort by
+          </label>
+          <select id="sort" onChange={handleChange} className="p-1 text-colour2 bg-colour4 rounded-md">
+            <option value="level">Level</option>
+            <option value="title">Title</option>
+          </select>
+        </div>
+      </div>
+      <div className="z-0">\
+        <TechniquesList sortBy={sortMode} />
+      </div>
     </div>
   );
 }
