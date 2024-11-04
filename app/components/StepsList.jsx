@@ -10,8 +10,8 @@ function StepsList(props) {
             {step.instruction}</li>);
 
     return (<>
-        <h3 className="medium-title">{category}</h3>
-        <ol className="list-item">{listItems}</ol>
+        <div className="text-xl font-bold mt-2">{category}</div>
+        <ol className="text-medium">{listItems}</ol>
     </>);
 }
 export default StepsList

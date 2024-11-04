@@ -1,5 +1,7 @@
+"use client";
+import Link from "next/link";
 import React from 'react';
-// import navbar from './navbar';
+import NavBar from './navbar';
 import IngredientList from './IngredientList';
 import StepsList from './StepsList';
 import RecipeSummary from './RecipeSummary';
@@ -41,12 +43,37 @@ function RecipePage() {
     { number: 8, instruction: "Return to the oven, and bake until no longer pink inside, 45 to 75 more minutes. An instant-read thermometer inserted into the thickest part of the loaf should read at least 160 degrees F (70 degrees C), so start checking at 45 minutes and continue baking until meatloaf reaches that temperature. Cooking time will depend on shape and thickness of the meatloaf." },
     { number: 9, instruction: "Serve hot and enjoy!" }]
 
+
     return (
-        <div className="recipePage">
-            <header /* <navbar/> */ />
-            <RecipeSummary recipeTitle={recipeTitle} recipeAuthor={recipeAuthor} recipeLevel={recipeLevel} recipeType={recipeType}/>
-            <IngredientList ingredients={meatloafIngredients} secondaryIngredients={meatloafGlazeIngredients} category="Ingredients" subcategory1="Meatloaf Ingredients" subcategory2="Glaze Ingredients" />
-            <StepsList steps={meatloafSteps} category="Instructions" />
+        <div className="bg-gradient-to-b from-[#fcda9d] to-[#f7dfb5] min-h-screen">
+            <nav className="fixed top-0 w-full">
+                <NavBar />
+            </nav>
+            <div className="text-gray-800 max-w-4xl mx-auto px-4 mt-20 md:mt-12">
+                <div className="max-w-4xl mx-auto bg-white px-6 py-8 mt-8 shadow-lg">
+                    <div className="flex flex-row justify-between items-start">
+                        <div className="flex flex-col">
+                            <RecipeSummary
+                                recipeTitle={recipeTitle}
+                                recipeAuthor={recipeAuthor}
+                                recipeLevel={recipeLevel}
+                                recipeType={recipeType} />
+                        </div>
+                        <Link href={"/"} >
+                            <u className="text-sm text-color4 hover:text-color3">Back to Search</u>
+                        </Link>
+                    </div>
+                    <IngredientList
+                        ingredients={meatloafIngredients}
+                        secondaryIngredients={meatloafGlazeIngredients}
+                        category="Ingredients"
+                        subcategory1="Meatloaf Ingredients"
+                        subcategory2="Glaze Ingredients" />
+                    <StepsList
+                        steps={meatloafSteps}
+                        category="Instructions" />
+                </div>
+            </div>
         </div>
     );
 }
