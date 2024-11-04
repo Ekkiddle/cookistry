@@ -35,15 +35,15 @@ function RecipePage() {
     { name: "Dijon mustard", amount: 2, amountType: "tablespoons" },
     { name: "Sriracha sauce (optional)", amount: 1, amountType: "teaspoon" }]
 
-    const meatloafSteps = [{ number: 1, instruction: "Gather all ingredients." },
-    { number: 2, instruction: "Preheat the oven to 325 degrees F (165 degrees C). Line a baking dish with lightly greased foil." },
-    { number: 3, instruction: "Place carrot, celery, onion, bell pepper, mushrooms, and garlic in a food processor; pulse until very finely chopped, almost to a purée. Transfer to a large mixing bowl." },
-    { number: 4, instruction: "Add ground chuck to the vegetables, along with Worcestershire sauce, egg, Italian herbs, salt, black pepper, and cayenne. Mix gently with a wooden spoon until ingredients are just combined. Sprinkle in bread crumbs and gently mix with your fingertips until just combined; don't overmix." },
-    { number: 5, instruction: "Shape the mixture into a loaf, about 4 inches high by 6 inches across. Place in the prepared baking pan." },
-    { number: 6, instruction: "Bake in the preheated oven just until the meatloaf is hot, about 15 minutes." },
-    { number: 7, instruction: "Remove meatloaf from the oven. Spoon glaze on the top of the meatloaf with the back of a spoon, then pull a tiny bit glaze down the sides." },
-    { number: 8, instruction: "Return to the oven, and bake until no longer pink inside, 45 to 75 more minutes. An instant-read thermometer inserted into the thickest part of the loaf should read at least 160 degrees F (70 degrees C), so start checking at 45 minutes and continue baking until meatloaf reaches that temperature. Cooking time will depend on shape and thickness of the meatloaf." },
-    { number: 9, instruction: "Serve hot and enjoy!" }]
+    const meatloafSteps = [{ number: 1, instruction: "Gather all ingredients.", image:"/recipes/ingredients.jpg" },
+    { number: 2, instruction: "Preheat the oven to 325 degrees F (165 degrees C). Line a baking dish with lightly greased foil.", image:"/recipes/oven.jpg" },
+    { number: 3, instruction: "Place carrot, celery, onion, bell pepper, mushrooms, and garlic in a food processor; pulse until very finely chopped, almost to a purée. Transfer to a large mixing bowl.", image:"/recipes/foodProcessor.jpeg" },
+    { number: 4, instruction: "Add ground chuck to the vegetables, along with Worcestershire sauce, egg, Italian herbs, salt, black pepper, and cayenne. Mix gently with a wooden spoon until ingredients are just combined. Sprinkle in bread crumbs and gently mix with your fingertips until just combined; don't overmix.", image:"/recipes/mixMeatloaf.jpg" },
+    { number: 5, instruction: "Shape the mixture into a loaf, about 4 inches high by 6 inches across. Place in the prepared baking pan.", image:"/recipes/meatloafInPan.jpg" },
+    { number: 6, instruction: "Bake in the preheated oven just until the meatloaf is hot, about 15 minutes.", image:"" },
+    { number: 7, instruction: "Remove meatloaf from the oven. Spoon glaze on the top of the meatloaf with the back of a spoon, then pull a tiny bit glaze down the sides.", image:"/recipes/glaze.jpg" },
+    { number: 8, instruction: "Return to the oven, and bake until no longer pink inside, 45 to 75 more minutes. An instant-read thermometer inserted into the thickest part of the loaf should read at least 160 degrees F (70 degrees C), so start checking at 45 minutes and continue baking until meatloaf reaches that temperature. Cooking time will depend on shape and thickness of the meatloaf.", image:"" },
+    { number: 9, instruction: "Serve hot and enjoy!", image:"/recipes/meatLoaf.jpg" }]
 
     const [isVisible, setIsVisible] = useState(false);
     const [threshold, setThreshold] = useState(300); // default threshold
@@ -81,10 +81,7 @@ function RecipePage() {
 
     return (
         <div>
-            <nav className="fixed top-0 w-full">
-                <NavBar />
-            </nav>
-
+            <NavBar />
             <div>
                 {isVisible ? (
                     <div className="fixed bottom-4 right-4 p-4 bg-blue-500 text-white">
