@@ -32,8 +32,8 @@ const RecipeList = ({ sortBy }) => {
     <div>
       {Object.keys(groupedRecipes).map((key) => (
         <div className="flex flex-col mb-8">
-            <div className="sticky top-24 md:top-12 bg-colour2 z-10 shadow-xl">
-                <h2 className="m-4 text-colour5 font-bold text-2xl">{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
+            <div className="sticky top-24 md:top-12 bg-colour2 z-10 shadow-xl p-2 pl-6">
+                <h2 className="text-colour5 font-bold text-2xl">{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
             </div>
           {groupedRecipes[key].map((recipe) => (
             <RecipeCard recipe={recipe} />
