@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/navbar";
 import RecipeList from "./components/Recipelist";
 
 export default function Home() {
@@ -13,20 +13,24 @@ export default function Home() {
   }
 
   return (
-    <main className="flex w-screen min-h-screen flex-col bg-colour5">
+    <main className="flex w-full min-h-screen flex-col bg-colour5">
       <NavBar />
-      <div className="w-screen h-24 md:h-12"></div>
+      <div className="w-full h-24 md:h-12"></div>
       <div className="w-full text-black">
-        <div className="bg-colour4 w-full p-2">
-          <strong className="text-4xl mx-2 text-colour2">Recipes</strong>
-        </div>
-        <div className="mx-4 mb-4 mt-1 text-sm text-gray-500">
-          <label htmlFor="sort-options" className="mr-2">Sort by:</label>
-          <select id="sort-options" onChange={handleChange} className="border p-1 rounded">
-            <option value="type">Type</option>
+      <div className="flex justify-between pt-2 pb-2 px-5">
+        <h1 className="text-3xl font-bold text-colour1">
+          Recipes
+        </h1>
+        <div className="flex my-auto">
+          <label htmlFor="sort" className="pr-1.5 my-auto text-colour1">
+            Sort by
+          </label>
+          <select id="sort" onChange={handleChange} className="p-1 text-colour2 bg-colour4 rounded-md">
             <option value="level">Level</option>
+            <option value="title">Type</option>
           </select>
         </div>
+      </div>
         <div className="w-full h-1 rounded-lg bg-colour4"></div>
         <div>
           <RecipeList sortBy={value} />
