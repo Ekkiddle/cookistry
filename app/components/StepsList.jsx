@@ -1,28 +1,29 @@
+import React from 'react';
 import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 
-function StepsList(props) {
-    const category = props.category;
-    const stepList = props.steps;
+function StepsList({ instructions = [] }) {
+    // Log the incoming instructions to see if they are passed correctly
+    console.log("Received instructions:", instructions);
 
     // State to track the checked status for each step
     const [checkedSteps, setCheckedSteps] = useState(
-        stepList.reduce((acc, step) => {
+        instructions.reduce((acc, step) => {
             acc[step.number] = false;
             return acc;
         }, {})
     );
 
     // Toggle function for checkbox
-    const handleToggle = (stepNumber) => {
+    const handleToggle = (number) => {
         setCheckedSteps(prevState => ({
             ...prevState,
-            [stepNumber]: !prevState[stepNumber]
+            [number]: !prevState[number]
         }));
     };
 
-    // Map over steps and render list items with checkboxes, instructions, and conditional images
-    const listItems = stepList.map((step) => (
+    // Map over instructions and render list items with checkboxes, instructions, and conditional images
+    const listItems = instructions.map((step) => (
         <li key={step.number} className="mb-3" style={{
             textDecoration: checkedSteps[step.number] ? 'line-through' : 'none'
         }}>
@@ -39,15 +40,15 @@ function StepsList(props) {
                     </div>
                     <div className="text-sm">{step.instruction}</div>
                 </div>
-                {/* Conditionally render image if step.imagePath is not an empty string */}
-                {step.image != "" ? (
+                {/* Conditionally render image if step.image is not an empty string */}
+                {step.image !== "" ? (
                     <div className="min-h-40 w-full">
-                    <img 
-                        src={step.image} 
-                        alt="Recipe" 
-                        className="w-full h-full object-cover max-h-40" 
-                    />
-                </div>
+                        <img 
+                            src={step.image} 
+                            alt="Recipe Step" 
+                            className="w-full h-full object-cover max-h-40" 
+                        />
+                    </div>
                 ) : <div></div>}
             </div>
         </li>
@@ -55,9 +56,6 @@ function StepsList(props) {
 
     return (
         <>
-            <div className="sticky top-24 md:top-12 bg-colour2 shadow-xl">
-                <h2 className="m-4 text-colour5 font-bold text-2xl">{category}</h2>
-            </div>
             <ol className="text-medium px-6">{listItems}</ol>
         </>
     );

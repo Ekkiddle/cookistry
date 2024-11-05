@@ -1,76 +1,71 @@
-function IngredientList(props) {
+import { useState, useRef, useEffect } from "react";
 
-    const category = props.category;
-    const subcategory1 = props.subcategory1;
-    const subcategory2 = props.subcategory2;
-    const ingredientList = props.ingredients;
-    const secondaryIngredients = props.secondaryIngredients;
-    const multiplierOn = false;
-    const multiplierAmount = "var";
+function toFraction(decimal) {
+    const tolerance = 1.0E-6; // Tolerance level for approximation
+    let numerator = 1;
+    let denominator = 1;
+    let fraction = decimal;
 
-    const listItems = ingredientList.map(ingredient =>
-        <li key={ingredient.name}>
-            {ingredient.amount}&nbsp;
-            {ingredient.amountType || ""}&nbsp;
-            {ingredient.name}</li>);
+    while (Math.abs(fraction - Math.round(fraction)) > tolerance) {
+        denominator++;
+        fraction = decimal * denominator;
+        numerator = Math.round(fraction);
+    }
 
-    const secondaryListItems = secondaryIngredients.map(ingredient =>
-        <li key={ingredient.name}>
-            {ingredient.amount}&nbsp;
-            {ingredient.amountType || ""}&nbsp;
-            {ingredient.name}</li>);
-
-    return (<>
-        <div className="sticky top-24 md:top-12 bg-colour2 z-5 shadow-xl">
-            <h2 className="m-4 text-colour5 font-bold text-2xl">{category}</h2>
-        </div>
-        <div className="px-6">
-            <div className="flex flex-row">
-                <button
-                    type="button"
-                    className="text-gray-900 bg-white 
-                    border border-gray-100 
-                    focus:outline-none hover:bg-gray-100 
-                    focus:ring-4 focus:ring-colour3 font-medium rounded-lg 
-                    text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
-                    dark:text-white dark:colour4 
-                    dark:hover:bg-colour3
-                    dark:hover:border-colour3 
-                    dark:focus:ring-colour3">
-                    x1
-                </button>
-                <button
-                    type="button"
-                    className="text-gray-900 bg-white 
-                border border-gray-100 
-                focus:outline-none hover:bg-gray-100 
-                focus:ring-4 focus:ring-colour3 font-medium rounded-lg 
-                text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
-                dark:text-white dark:colour4 
-                dark:hover:bg-colour3
-                dark:hover:border-colour3 
-                dark:focus:ring-colour3">
-                    x2
-                </button>
-                <button
-                    type="button"
-                    className="text-gray-900 bg-white 
-                border border-gray-100 
-                focus:outline-none hover:bg-gray-100 
-                focus:ring-4 focus:ring-colour3 font-medium rounded-lg 
-                text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 
-                dark:text-white dark:colour4 
-                dark:hover:bg-colour3
-                dark:hover:border-colour3 
-                dark:focus:ring-colour3">
-                    x3
-                </button>
-            </div>
-            {secondaryIngredients.length > 0 ? <h3 className="italic mt-2 mb-1">{subcategory1}:</h3> : null}
-            <ul className="list-item list-disc ml-4">{listItems}</ul>
-            {secondaryIngredients.length > 0 ? <h3 className="italic mt-2 mb-1">{subcategory2}:</h3> : null}
-            {secondaryIngredients.length > 0 ? <ul className="list-item list-disc ml-4">{secondaryListItems}</ul> : null}
-        </div>
-    </>);
+    return `${numerator}/${denominator}`;
 }
-export default IngredientList
+
+function IngredientList({ ingredients = [], onOutOfView, onInView }) {
+
+    const [multiplier, setMultiplier] = useState(1);
+
+    const handleMultiplierChange = (newMultiplier) => {
+        setMultiplier(newMultiplier);
+    };
+
+    return (
+        <>
+            <div className="px-6 md:px-12">
+                <div className="flex flex-row">
+                    {[1, 2, 3].map((value) => (
+                        <button
+                            key={value}
+                            onClick={() => handleMultiplierChange(value)}
+                            className={`text-gray-900 bg-white 
+                                        border border-gray-300 
+                                        focus:outline-none hover:bg-gray-200 
+                                        focus:ring-4 focus:ring-orange-300 font-medium rounded-lg 
+                                        text-sm px-5 py-2.5 me-2 mb-4
+                                        ${value === multiplier ? 'bg-orange-300 text-white shadow-md' : ''}`} >
+                            x{value}
+                        </button>
+                    ))}
+                </div>
+                {ingredients.map((ingredientGroup, index) => (
+                    <div key={index}>
+                        {ingredientGroup.listName && (
+                            <h3 className="italic mt-2 mb-1">{ingredientGroup.listName}:</h3>
+                        )}
+                        <ul className="ml-4 list-disc text-gray-900">
+                            {ingredientGroup.list.map((ingredient, idx) => {
+                                const adjustedAmount = ingredient.amount * multiplier;
+                                // Display as fraction if it's not a whole number
+                                const displayAmount = Number.isInteger(adjustedAmount)
+                                    ? adjustedAmount
+                                    : toFraction(adjustedAmount);
+
+                                return (
+                                    <li key={idx} className="text-gray-900">
+                                        {displayAmount} {ingredient.amountType || ""} {ingredient.ingredient}
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </>
+    );
+}
+
+export default IngredientList;
