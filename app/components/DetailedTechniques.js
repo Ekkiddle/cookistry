@@ -46,14 +46,15 @@ const DetailedTechniques = ({ technique }) => {
       )}
 
 
-<div className="flex flex-row w-full gap-4 mt-4">
+      {/* Image Display */}
+      <div className="flex flex-col sm:flex-row gap-4 mt-4">
         {technique.image1 && (
           <Image
             src={technique.image1}
             alt="Technique step image 1"
             width={300}
             height={200}
-            className="rounded-lg border border-colour2 object-cover"
+            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
           />
         )}
         {technique.image2 && (
@@ -62,13 +63,10 @@ const DetailedTechniques = ({ technique }) => {
             alt="Technique step image 2"
             width={300}
             height={200}
-            className="rounded-lg border border-colour2 object-cover"
+            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
           />
         )}
       </div>
-
-
-      
 
       {/* Suggested Recipes */}
       <h2 className="text-xl font-bold text-colour1 mt-6">Recipes with this Technique:</h2>
