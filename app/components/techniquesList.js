@@ -43,10 +43,10 @@ export default function TechniquesList({sortBy}) {
       {
         Object.keys(grouped_techniques).map((group => (
           <div key={group}>
-            <h2 className="sticky top-24 md:top-12 p-1 pl-6 text-xl font-bold bg-colour2 text-colour4">
-              {group.toUpperCase()}
+            <h2 className="sticky top-24 md:top-12 z-10 p-2 pl-6 text-xl font-bold bg-colour2 text-colour4">
+              {group.charAt(0).toUpperCase() + group.slice(1)}
             </h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 p-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 z-0 gap-4 p-4">
               {
                 grouped_techniques[group].map((technique) => (
                   <TechniquesCard technique={technique} />

@@ -14,8 +14,8 @@ export default function Page() {
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
       <div className="z-10"><NavBar /></div>
-      <div className="flex justify-between pt-28 md:pt-16 pb-2 px-5">
-        <h1 className="text-3xl font-bold text-colour1">
+      <div className="flex justify-between pt-28 md:pt-16 pb-4 px-5">
+        <h1 className="text-2xl font-bold text-colour2">
           Techniques
         </h1>
         <div className="flex my-auto">
@@ -28,7 +28,7 @@ export default function Page() {
           </select>
         </div>
       </div>
-      <div className="z-0">\
+      <div className="z-0">
         <TechniquesList sortBy={sortMode} />
       </div>
     </div>
