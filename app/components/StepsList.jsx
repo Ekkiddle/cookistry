@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Image from 'next/image';
 import Checkbox from '@mui/material/Checkbox';
 
 function StepsList(props) {
@@ -56,10 +55,10 @@ function StepsList(props) {
 
     return (
         <>
-            <div className="sticky top-24 md:top-12 bg-colour2 z-5 shadow-xl">
+            <div className="sticky top-24 md:top-12 bg-colour2 shadow-xl">
                 <h2 className="m-4 text-colour5 font-bold text-2xl">{category}</h2>
             </div>
-            <ol className="text-medium">{listItems}</ol>
+            <ol className="text-medium px-6">{listItems}</ol>
         </>
     );
 }
