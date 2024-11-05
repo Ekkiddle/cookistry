@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/navbar";
 import RecipeList from "./components/Recipelist";
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
         </div>
         <div className="w-full h-1 rounded-lg bg-colour4"></div>
         <div>
-          <RecipeList sortBy={value} />
+          <RecipeList sortBy={value} />        
         </div>
       </div>
     </main>
