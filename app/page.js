@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import NavBar from "./components/Navbar";
+import NavBar from "./components/navbar";
 import RecipeList from "./components/Recipelist";
 
 export default function Home() {
