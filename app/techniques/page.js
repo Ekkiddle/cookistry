@@ -1,6 +1,6 @@
 "use client"
 
-import NavBar from "../components/Navbar";
+import NavBar from "../components/navbar";
 import TechniquesList from "../components/techniquesList";
 import { useState } from "react";
 

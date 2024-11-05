@@ -29,6 +29,7 @@ const recipes = [
   },
   {
     name: "Crispy Broccoli and Cheese",
+    slug: "cripy-broccoli-and-cheese",
     author: "",
     type: "appetizer",
     level: "beginner",
@@ -55,6 +56,7 @@ const recipes = [
   },
   {
     name: "Baked Mac and Cheese",
+    slug: "backed-mac-and-cheese",
     author: "",
     type: "entree",
     level: "beginner",
@@ -88,6 +90,7 @@ const recipes = [
   },
   {
     name: "Pumpkin Pie",
+    slug: "pumpkin-pie",
     author: "",
     type: "dessert",
     level: "intermediate",
@@ -123,6 +126,7 @@ const recipes = [
   // Additional recipes for variety
   {
     name: "Chicken Curry",
+    slug: "chicken-curry",
     author: "",
     type: "entree",
     level: "advanced",
@@ -148,6 +152,7 @@ const recipes = [
   },
   {
     name: "Garlic Bread",
+    slug: "garlic-bread",
     author: "",
     type: "appetizer",
     level: "beginner",
@@ -172,6 +177,7 @@ const recipes = [
   },
   {
     name: "Fruit Salad",
+    slug: "fruit-salad",
     author: "",
     type: "dessert",
     level: "beginner",
@@ -245,6 +251,7 @@ const recipes = [
   },
   {
     name: "Beef Wellington",
+    slug: "beef-wellington",
     type: "entree",
     level: "advanced",
     image: "/recipes/beefWellington.jpg", // Path to image goes here
@@ -267,16 +274,16 @@ const recipes = [
       }
     ],
     instructions: [
-      { number: "Season beef tenderloin with salt and pepper.", image: "" },
-      { number: "Heat olive oil in a skillet over high heat, sear beef on all sides until browned, then set aside to cool.", image: "" },
-      { number: "Brush beef with Dijon mustard.", image: "" },
-      { number: "In the same skillet, sauté mushrooms until moisture evaporates and they become a paste-like mixture.", image: "" },
-      { number: "Lay out plastic wrap, place prosciutto slices in an even layer, spread mushroom mixture over the prosciutto, and place beef in the center.", image: "" },
-      { number: "Wrap beef in the prosciutto-mushroom layer, tightly rolling it up in the plastic wrap. Refrigerate for 15 minutes.", image: "" },
-      { number: "Preheat oven to 400°F (200°C).", image: "" },
-      { number: "Roll out puff pastry, remove beef from plastic wrap, and wrap it in the pastry. Seal the edges and brush with beaten egg.", image: "" },
-      { number: "Place beef Wellington on a baking sheet, seam-side down, and bake for 35-45 minutes or until golden brown and beef is at desired doneness.", image: "" },
-      { number: "Let rest for 10 minutes before slicing and serving.", image: "" }
+      { number: 1, instruction: "Season beef tenderloin with salt and pepper.", image: "" },
+      { number: 2, instruction: "Heat olive oil in a skillet over high heat, sear beef on all sides until browned, then set aside to cool.", image: "" },
+      { number: 3, instruction: "Brush beef with Dijon mustard.", image: "" },
+      { number: 4, instruction: "In the same skillet, sauté mushrooms until moisture evaporates and they become a paste-like mixture.", image: "" },
+      { number: 5, instruction: "Lay out plastic wrap, place prosciutto slices in an even layer, spread mushroom mixture over the prosciutto, and place beef in the center.", image: "" },
+      { number: 6, instruction: "Wrap beef in the prosciutto-mushroom layer, tightly rolling it up in the plastic wrap. Refrigerate for 15 minutes.", image: "" },
+      { number: 7, instruction: "Preheat oven to 400°F (200°C).", image: "" },
+      { number: 8, instruction: "Roll out puff pastry, remove beef from plastic wrap, and wrap it in the pastry. Seal the edges and brush with beaten egg.", image: "" },
+      { number: 9, instruction: "Place beef Wellington on a baking sheet, seam-side down, and bake for 35-45 minutes or until golden brown and beef is at desired doneness.", image: "" },
+      { number: 10, instruction: "Let rest for 10 minutes before slicing and serving.", image: "" }
     ]
   },
 ];
