@@ -76,7 +76,7 @@ const Searchbar = () => {
 
 
     return(
-        <div className="border-[2px] border-solid border-slate-500 flex flex-row items-center gap-3 rounded-[15px] w-full h-6">
+        <div className="border-[2px] border-solid border-slate-500 flex flex-row items-center gap-3 rounded-[15px] w-full h-6 text-white">
             <IoIosSearch className="text-lg md:text-xl font-bold m-1"/>
 
             <input type="text"
