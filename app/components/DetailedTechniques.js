@@ -1,6 +1,7 @@
 // components/DetailedTechniques.js
 import React from "react";
 import Button from '@mui/material/Button';
+
 import Link from 'next/link'; // Import Link from Next.js
 import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
 
@@ -74,6 +75,7 @@ const DetailedTechniques = ({ technique }) => {
       <ul className="list-disc pl-6 text-colour1">
         {technique.recipes.map((recipe, index) => (
           <li key={index} className="mt-1">{recipe}</li>
+          
         ))}
       </ul>
     </div>
