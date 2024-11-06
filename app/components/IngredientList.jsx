@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 
 function toFraction(decimal) {
     const tolerance = 1.0E-6; // Tolerance level for approximation
@@ -24,9 +24,15 @@ function IngredientList({ ingredients = [], onOutOfView, onInView }) {
     };
 
     return (
-        <>
-            <div className="px-6 md:px-12">
-                <div className="flex flex-row">
+        // lg:flex lg:flex-row-reverse lg:flex-row lg:justify-between lg:items-start
+        <div className=" w-full px-6 md:px-12">
+
+            {/* (conditional in desktop view) Second Column: adjust portion */}
+            <div className="inline-flex items-center justify-left gap-3">
+                <div>
+                    {"Adjust portions: "}
+                </div>
+                <div className="inline-flex gap-1">
                     {[1, 2, 3].map((value) => (
                         <button
                             key={value}
@@ -35,12 +41,18 @@ function IngredientList({ ingredients = [], onOutOfView, onInView }) {
                                         border border-gray-300 
                                         focus:outline-none hover:bg-gray-200 
                                         focus:ring-4 focus:ring-orange-300 font-medium rounded-lg 
-                                        text-sm px-5 py-2.5 me-2 mb-4
-                                        ${value === multiplier ? 'bg-orange-300 text-white shadow-md' : ''}`} >
+                                        text-xs px-3 py-1 me-1 mb-4
+                                        sm:text-sm sm:px-4 sm:py-1.5
+                                        md:text-base md:px-5 md:py-2.5
+                                        ${value === multiplier ? '!bg-orange-300 text-black shadow-md' : ''}`} >
                             x{value}
                         </button>
                     ))}
                 </div>
+            </div>
+
+            {/* First column Ingredients list */}
+            <div>
                 {ingredients.map((ingredientGroup, index) => (
                     <div key={index}>
                         {ingredientGroup.listName && (
@@ -64,7 +76,8 @@ function IngredientList({ ingredients = [], onOutOfView, onInView }) {
                     </div>
                 ))}
             </div>
-        </>
+
+        </div>
     );
 }
 
