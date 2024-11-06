@@ -30,6 +30,23 @@ const Detailed = [
           }
       ],
       recipes: ["Boiled Eggs", "Pasta with Meatballs", "Risotto"] // list of recipes using this technique
+  },
+  {
+    image1: "/techniques/fold-in.jpg",
+    image2: "/techniques/fold-in2.jpeg",
+    imageAlt: "A person mixing dough using a wooden spatula in a stainless bowl. Photo by Ron Lach from Pexels.com.",
+    title: "Fold in",
+    level: "intermediate",
+    summary: "A technique for carefully combining two substances of different thickness and weight into one (relatively) smooth mixture.",
+    main_video: "https://www.youtube.com/watch?v=7To3giV62rg", // path to video here
+    description: [ // description of technique, broken down into sections
+      {
+        text: "Fold the dough or whatever ",
+        image: "", // optional
+        video: "", // optional
+      }
+    ],
+    recipes: ["Cookie dough", " something something "] // list of recipes using this technique
   }
 ];
 

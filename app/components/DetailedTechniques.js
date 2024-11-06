@@ -14,8 +14,8 @@ const DetailedTechniques = ({ technique }) => {
       {/* Flex container for button and title stacked vertically */}
       <div className="flex flex-col items-start pb-4">
         {/* Back to Technique list link */}
-        <Link href="/DetailedTechniques" className="text-sm text-colour2 hover:text-colour3 flex items-center mb-2">
-          <IoIosArrowBack className="mr-1" /> Back to Technique List
+        <Link href="/DetailedTechniques" className="text-sm text-colour2 font-bold hover:text-colour3 flex items-center mb-1">
+          <IoIosArrowBack className="mr-2" /> Back to Technique List
         </Link>
         {/* Title of the technique */}
         <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
@@ -23,11 +23,12 @@ const DetailedTechniques = ({ technique }) => {
 
 
       {/* the skill level  */}
-      <h2 className="text-lg font-semibold text-colour1">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
+      <h2 className="text-lg font-semibold text-colour3">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
 
 
       {/* Combined Description Text */}
       <div className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
+        <h1 className="text-colour1 font-bold" > Summary</h1>
         <p className="text-colour1">{combinedText}</p>
       </div>
 
