@@ -1,11 +1,9 @@
 import TechniquesCard from "./techniquesCard"
-import techniques from '@/public/techniques/techniques'
 
-
-export default function TechniquesList({sortBy}) {
+export default function TechniquesList({techniques, sortBy}) {
   const SORT_MODES = {
     level: ['beginner', 'intermediate', 'advanced'],
-    title: undefined
+    name: undefined
   }
 
   // sort techniques according to sort mode
