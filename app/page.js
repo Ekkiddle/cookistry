@@ -33,7 +33,7 @@ export default function Home() {
       </div>
         <div className="w-full h-1 rounded-lg bg-colour4"></div>
         <div>
-          <RecipeList sortBy={value} />
+          <RecipeList sortBy={value} />        
         </div>
       </div>
     </main>

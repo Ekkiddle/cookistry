@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 
-function StepsList({ instructions = [] }) {
+function StepsList({ instructions = [], showMedia }) {
     // Log the incoming instructions to see if they are passed correctly
     console.log("Received instructions:", instructions);
 
@@ -40,8 +40,9 @@ function StepsList({ instructions = [] }) {
                     </div>
                     <div className="text-sm">{step.instruction}</div>
                 </div>
+                
                 {/* Conditionally render image if step.image is not an empty string */}
-                {step.image !== "" ? (
+                {showMedia && step.image !== "" ? (
                     <div className="min-h-40 w-full">
                         <img 
                             src={step.image} 

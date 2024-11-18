@@ -23,19 +23,22 @@ function IngredientDrawer({ ingredients }) {
 
                 {/* Drawer Content */}
                 <div
-                    className={`fixed top-0 left-0 z-30 w-72 h-full bg-white shadow-lg transform transition-transform duration-500 md:w-2/5 ${isOpen ? "translate-x-0" : "-translate-x-full"
-                        } overflow-y-auto`}
+                    className={`fixed top-0 left-0 z-30 w-72 h-full bg-white shadow-lg 
+                                transform transition-transform duration-500 md:w-2/5 
+                                ${ isOpen ? "translate-x-0" : "-translate-x-full" } overflow-y-auto`}
                 >
+
                     {/* Close button inside the drawer */}
                     <button
                         onClick={toggleDrawer}
-                        className="fixed top-4 right-4 text-gray-500 hover:text-gray-800"
+                        className="fixed top-4 right-4 text-colour1 hover:text-colour3"
                     >
-                        x <u>close</u>
+                        {"x"} <u>{"close"}</u>
                     </button>
 
+                    {/* Ingredients list component */}
                     <div className="px-6 py-4">
-                        <h2 className="text-2xl font-semibold mx-10 my-4 text-gray-700">Ingredients</h2>
+                        <h2 className="!w-full text-xl font-semibold mx-10 my-4 text-gray-700 md:text-2xl">{"Ingredients"}</h2>
                         <ul className="list-item">
                             <IngredientList ingredients={ingredients} />
                         </ul>
