@@ -26,8 +26,8 @@ export default function Home() {
             Sort by
           </label>
           <select id="sort" onChange={handleChange} className="p-1 text-colour2 bg-colour4 rounded-md">
+            <option value="type">Type</option>
             <option value="level">Level</option>
-            <option value="title">Type</option>
           </select>
         </div>
       </div>

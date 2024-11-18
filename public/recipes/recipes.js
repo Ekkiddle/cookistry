@@ -209,7 +209,7 @@ const recipes = [
     video: "",
     ingredients: [
       {
-        listName: "Meatloaf Ingredients",
+        listname: "Meatloaf Ingredients",
         list: [
           { ingredient: "medium carrot", amount: 1 },
           { ingredient: "rib celery", amount: 1 },
@@ -228,7 +228,7 @@ const recipes = [
         ]
       },
       {
-        listName: "Glaze Ingredients",
+        listname: "Glaze Ingredients",
         list: [
           { ingredient: "brown sugar", amount: 2, amountType: "tablespoons" },
           { ingredient: "ketchup", amount: 2, amountType: "tablespoons" },
