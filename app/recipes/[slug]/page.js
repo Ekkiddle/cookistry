@@ -108,9 +108,4 @@ function Page({ params: paramsPromise }) {
     );
 }
 
-// Function to generate static parameters for dynamic routing
-export async function generateStaticParams() {
-    return recipes.map((recipe) => ({ slug: recipe.slug }));
-}
-
 export default Page;
