@@ -10,7 +10,7 @@ import IngredientDrawer from "../../components/IngredientDrawer";
 import recipes from "@/public/recipes/recipes";
 import { useRouter } from "next/navigation";
 
-function page({ params: paramsPromise }) {
+function Page({ params: paramsPromise }) {
 
     const params = React.use(paramsPromise);
     const { slug } = params;
@@ -128,4 +128,4 @@ function page({ params: paramsPromise }) {
     );
 }
 
-export default page
+export default Page
