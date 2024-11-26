@@ -30,29 +30,44 @@ function Page({ params: paramsPromise }) {
     useEffect(() => {
         const ingredientsElement = ingredientsRef.current;
         const instructionsElement = instructionsRef.current;
-
+    
+        // State to track visibility of each section
+        let isIngredientsVisible = true;
+        let isInstructionsVisible = false;
+    
+        // Intersection Observer callback
+        const handleIntersection = () => {
+            // Set `setShowDrawer` based on both visibility states
+            setShowDrawer(!isIngredientsVisible && isInstructionsVisible);
+        };
+    
         const ingredientsObserver = new IntersectionObserver(
             ([entry]) => {
-                setShowDrawer(!entry.isIntersecting);
+                isIngredientsVisible = entry.isIntersecting; // Update state for ingredients
+                handleIntersection();
             },
             { root: null, threshold: 0 }
         );
-
+    
         const instructionsObserver = new IntersectionObserver(
             ([entry]) => {
-                setShowDrawer(entry.isIntersecting);
+                isInstructionsVisible = entry.isIntersecting; // Update state for instructions
+                handleIntersection();
             },
             { root: null, threshold: 0.1 }
         );
-
+    
+        // Observe elements
         if (ingredientsElement) ingredientsObserver.observe(ingredientsElement);
         if (instructionsElement) instructionsObserver.observe(instructionsElement);
-
+    
+        // Cleanup on unmount
         return () => {
             if (ingredientsElement) ingredientsObserver.unobserve(ingredientsElement);
             if (instructionsElement) instructionsObserver.unobserve(instructionsElement);
         };
     }, []);
+    
 
     // Early return if recipe is not found
     if (!recipe) return <p>Recipe not found</p>;
