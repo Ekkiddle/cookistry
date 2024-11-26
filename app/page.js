@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState } from "react";
 import NavBar from "./components/navbar";
+import techniques from "@/public/techniques/techniques";
+import recipes from "@/public/recipes/recipes";
 import RecipeList from "./components/Recipelist";
 
 export default function Home() {
