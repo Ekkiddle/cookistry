@@ -59,11 +59,18 @@ const Searchbar = () => {
 
     // Handle Enter key for search
     const handleKeyPress = (event) => {
-        if (event.key === "Enter" && inputValue.trim() !== "") {
-            console.log("Search:", inputValue.toLowerCase());
-            // Perform search or navigate to a search results page
+        if (event.key === "Enter") {
+            if(inputValue.trim() == ""){
+                router.push(`/`);
+            }
+            else{
+                router.push(`/search/${encodeURIComponent(inputValue.trim())}`);
+                setInputValue(""); // Optionally clear the search input
+                setOpenSuggestions(false); // Hide suggestions
+            }
         }
     };
+    
 
     const handleOpenFilter = () => setOpenFilter(true);
     const handleCloseFilter = () => setOpenFilter(false);
