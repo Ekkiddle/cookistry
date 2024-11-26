@@ -2,31 +2,44 @@
 import React from 'react';
 import recipes from '@/public/recipes/recipes'; // Adjust the path as necessary
 import RecipeCard from './RecipeCard';
+import { useFilter } from './Filter';
 
 const RecipeList = ({ sortBy }) => {
-    const sortOrder = {
-        type: ['appetizer', 'entree', 'dessert'],
-        level: ['beginner', 'intermediate', 'advanced'],
-      };
-    
-      const sortedRecipes = [...recipes].sort((a, b) => {
-        const order = sortOrder[sortBy];
-        return order.indexOf(a[sortBy]) - order.indexOf(b[sortBy]);
-      });
+  const sortOrder = {
+    type: ['appetizer', 'entree', 'dessert'],
+    level: ['beginner', 'intermediate', 'advanced'],
+  };
+
+  const { filters } = useFilter(); // Access filters from context
+
+  // Apply the filters to the recipes
+  const filteredRecipes = recipes.filter(
+    (recipe) =>
+        (filters.levels.length === 0 || filters.levels.includes(recipe.level)) &&
+        (filters.types.length === 0 || filters.types.includes(recipe.type))
+);
+
+  // Sort the filtered recipes
+  const sortedRecipes = [...filteredRecipes].sort((a, b) => {
+      const order = sortOrder[sortBy];
+      return order.indexOf(a[sortBy]) - order.indexOf(b[sortBy]);
+  });
 
   // Function to group recipes by the specified property (type or level)
   const groupRecipes = (recipes, sortBy) => {
-    return recipes.reduce((acc, recipe) => {
-      const key = recipe[sortBy]; // Use the specified property to group
-      if (!acc[key]) {
-        acc[key] = [];
-      }
-      acc[key].push(recipe);
-      return acc;
-    }, {});
+      return recipes.reduce((acc, recipe) => {
+          const key = recipe[sortBy]; // Use the specified property to group
+          if (!acc[key]) {
+              acc[key] = [];
+          }
+          acc[key].push(recipe);
+          return acc;
+      }, {});
   };
 
+  // Group the sorted and filtered recipes
   const groupedRecipes = groupRecipes(sortedRecipes, sortBy);
+
 
   return (
     <div>
