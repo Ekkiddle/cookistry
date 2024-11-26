@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import { FilterProvider } from "./components/Filter";
+import NavBar from "./components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,6 +26,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <NavBar />
+        <div className="w-full h-24 md:h-12"></div>
         {children}
       </body>
       </FilterProvider>

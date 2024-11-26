@@ -9,7 +9,6 @@ import NavBar from "../components/navbar";
 const TestDetailedTechniques = () => {
   return (    
     <div className="flex flex-col w-full min-h-screen mt-5 bg-colour5">
-      <div className="z-10"><NavBar /></div>
       <DetailedTechniques technique={Detailed[0]} /> {/* Pass the first technique */}
     </div>
   );
