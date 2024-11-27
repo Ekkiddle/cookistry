@@ -16,7 +16,7 @@ const NavBar = () => {
                 <u className="text-colour4 hover:text-colour3">Recipes</u>
             </Link>
             <Link href={"/techniques"}>
-                <u className="text-colour4 hover:text-colour3">Resources</u>
+                <u className="text-colour4 hover:text-colour3">Techniques</u>
             </Link>
           </div>
         </div>

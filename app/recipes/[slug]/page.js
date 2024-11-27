@@ -30,36 +30,50 @@ function Page({ params: paramsPromise }) {
     useEffect(() => {
         const ingredientsElement = ingredientsRef.current;
         const instructionsElement = instructionsRef.current;
-
+    
+        // State to track visibility of each section
+        let isIngredientsVisible = true;
+        let isInstructionsVisible = false;
+    
+        // Intersection Observer callback
+        const handleIntersection = () => {
+            // Set `setShowDrawer` based on both visibility states
+            setShowDrawer(!isIngredientsVisible && isInstructionsVisible);
+        };
+    
         const ingredientsObserver = new IntersectionObserver(
             ([entry]) => {
-                setShowDrawer(!entry.isIntersecting);
+                isIngredientsVisible = entry.isIntersecting; // Update state for ingredients
+                handleIntersection();
             },
             { root: null, threshold: 0 }
         );
-
+    
         const instructionsObserver = new IntersectionObserver(
             ([entry]) => {
-                setShowDrawer(entry.isIntersecting);
+                isInstructionsVisible = entry.isIntersecting; // Update state for instructions
+                handleIntersection();
             },
             { root: null, threshold: 0.1 }
         );
-
+    
+        // Observe elements
         if (ingredientsElement) ingredientsObserver.observe(ingredientsElement);
         if (instructionsElement) instructionsObserver.observe(instructionsElement);
-
+    
+        // Cleanup on unmount
         return () => {
             if (ingredientsElement) ingredientsObserver.unobserve(ingredientsElement);
             if (instructionsElement) instructionsObserver.unobserve(instructionsElement);
         };
     }, []);
+    
 
     // Early return if recipe is not found
     if (!recipe) return <p>Recipe not found</p>;
 
     return (
-        <div className="w-full flex justify-center px-8 md:px-10">
-            <NavBar />
+        <div className="w-full flex justify-center px-2 lg:px-8">
 
             {/* Ingredient drawer component */}
             <div className="z-40 px-0">
@@ -67,7 +81,7 @@ function Page({ params: paramsPromise }) {
             </div>
 
             {/* Creates a background that has all the parts of recipe page on it */}
-            <div className="max-w-5xl mx-auto bg-white mt-28 mx-6 shadow-lg z-10 md:mt-16">
+            <div className="max-w-5xl mx-auto bg-white mt-4 mx-6 shadow-lg z-10">
 
                 {/* Back to Search Button */}
                 <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">

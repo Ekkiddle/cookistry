@@ -30,7 +30,7 @@ const recipes = [
   },
   {
     name: "Crispy Broccoli and Cheese",
-    slug: "cripy-broccoli-and-cheese",
+    slug: "crispy-broccoli-and-cheese",
     author: "",
     type: "appetizer",
     level: "beginner",

@@ -16,8 +16,6 @@ export default function Home() {
 
   return (
     <main className="flex w-full min-h-screen flex-col bg-colour5">
-      <NavBar />
-      <div className="w-full h-24 md:h-12"></div>
       <div className="w-full text-black">
       <div className="flex justify-between pt-2 pb-2 px-5">
         <h1 className="text-3xl font-bold text-colour1">

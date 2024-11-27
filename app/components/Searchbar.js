@@ -1,166 +1,141 @@
-"use client"
+"use client";
 
-// Search bar component for Navbar
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { IoIosSearch } from "react-icons/io";
 import { CiFilter } from "react-icons/ci";
-import { Button, FormControl, FormLabel, FormGroup, FormControlLabel, Checkbox, Typography} from "@mui/material";
+import FilterMenu from "./Filtermenu";
+import recipes from "@/public/recipes/recipes";
+import techniques from "@/public/techniques/techniques";
+import { useRouter } from "next/navigation";
 
 const Searchbar = () => {
-    const componentRef = useRef(null);
+    const router = useRouter();
 
-    useEffect(() => {
-        // Function to check if the click is outside
-        function handleClickOutside(event) {
-          if (componentRef.current && !componentRef.current.contains(event.target)) {
-            setOpen(false);
-          }
+    const [inputValue, setInputValue] = useState(""); // Current input value
+    const [suggestions, setSuggestions] = useState([]); // Dynamic suggestions
+    const [openSuggestions, setOpenSuggestions] = useState(false); // Show/hide suggestions
+    const [openFilter, setOpenFilter] = useState(false);
+
+    // Combined data for search
+    const searchData = [
+        ...recipes.map((recipe) => ({ ...recipe, type: "recipe" })),
+        ...techniques.map((technique) => ({ ...technique, type: "technique" })),
+    ];
+
+    // Handle input change and fetch suggestions
+    const handleInputChange = (event) => {
+        const value = event.target.value;
+        setInputValue(value);
+
+        if (value.trim() !== "") {
+            const filtered = searchData.filter((item) =>
+                (item.name || item.title)
+                    .toLowerCase()
+                    .includes(value.toLowerCase())
+            );
+            setSuggestions(filtered);
+            setOpenSuggestions(true);
+        } else {
+            setSuggestions([]);
+            setOpenSuggestions(false);
         }
-    
-        // Bind the event listener to the document
-        document.addEventListener('mousedown', handleClickOutside);
-    
-        // Clean up the event listener on component unmount
-        return () => {
-          document.removeEventListener('mousedown', handleClickOutside);
-        };
-    }, []);
-
-    const [levelFilter, setLevelFilter] = useState({
-        beginner: true,
-        intermediate: true,
-        advanced: true,
-      });
-      const [typeFilter, setTypeFilter] = useState({
-        appetizer: true,
-        entree: true,
-        dessert: true,
-      });
-    
-      // Update filters when checkboxes change
-      const handleLevelChange = (event) => {
-        setLevelFilter({ ...levelFilter, [event.target.name]: event.target.checked });
-      };
-    
-      const handleTypeChange = (event) => {
-        setTypeFilter({ ...typeFilter, [event.target.name]: event.target.checked });
-      };
-
-    const [inputValue, setValue] = useState("")
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {setOpen(true)};
-    const handleClose = () => {setOpen(false)};
-
-    const handleChange = (event) => {
-        setValue(event.target.value);
     };
 
-    const handleSearch = () => {
-        console.log(inputValue.toLowerCase());
-    }
+    // Handle suggestion click
+    const handleSuggestionClick = (suggestion) => {
+        setInputValue("");
+        setSuggestions([]);
+        setOpenSuggestions(false);
 
+        // Determine the URL based on the suggestion type
+        const url = suggestion.slug
+            ? suggestion.type == "technique"
+                ? `/techniques/${suggestion.slug}` // Navigate to technique if 'name' does not exist
+                : `/recipes/${suggestion.slug}` // Navigate to recipe if 'name' exists
+            : "/"; // Default fallback, you can customize this if needed
+
+        router.push(url);
+    };
+
+    // Handle Enter key for search
     const handleKeyPress = (event) => {
         if (event.key === "Enter") {
-            handleSearch();
+            if(inputValue.trim() == ""){
+                router.push(`/`);
+            }
+            else{
+                router.push(`/search/${encodeURIComponent(inputValue.trim())}`);
+                setInputValue(""); // Optionally clear the search input
+                setOpenSuggestions(false); // Hide suggestions
+            }
         }
-    }
-
-    const filter = () => {
-        const activeLevels = Object.keys(levelFilter).filter((level) => levelFilter[level]);
-        const activeTypes = Object.keys(typeFilter).filter((type) => typeFilter[type]);
+    };
     
-        console.log('Active Levels:', activeLevels);
-        console.log('Active Types:', activeTypes);
-        handleClose();
+
+    const handleOpenFilter = () => setOpenFilter(true);
+    const handleCloseFilter = () => setOpenFilter(false);
+
+    // Handle input focus and blur
+    const handleFocus = () => {
+        if (suggestions.length > 0) setOpenSuggestions(true);
     };
 
+    const handleBlur = () => {
+        // Delay hiding suggestions to allow suggestion click to register
+        setTimeout(() => setOpenSuggestions(false), 150);
+    };
 
-    return(
-        <div className="border-[2px] border-solid border-slate-500 flex flex-row items-center gap-3 rounded-[15px] w-full h-6 text-white">
-            <IoIosSearch className="text-lg md:text-xl font-bold m-1"/>
-
-            <input type="text"
-                id="inputId"
-                placeholder="Search here"
-                value={inputValue || ""} onChange={handleChange}
-                onKeyDown={handleKeyPress}
-                className="bg-[transparent] outline-none border-none w-full text-xs md:text-sm" />
-            <div className="relative h-full">
-                <button className="bg-slate-500 h-full rounded-r-[15px] w-10 flex items-center justify-center hover:bg-slate-700 text-white hover:text-slate-500"
-                    onClick={handleOpen}>
-                    <CiFilter />
-                    
-                </button>
-                {open ? (
-                    <div ref={componentRef} className="absolute flex flex-col p-2 bg-colour4 top-5 right-0 shadow-xl rounded-sm text-colour2 gap-2">
-                        <Typography style={{ textDecoration: 'underline' }}>
-                            Filter Settings
-                        </Typography>
-                        {/* Level Filter */}
-                        <FormControl component="fieldset">
-                            <FormLabel component="legend">Level</FormLabel>
-                            <FormGroup >
-                            {['beginner', 'intermediate', 'advanced'].map((level) => (
-                                <FormControlLabel
-                                key={level}
-                                control={
-                                    <Checkbox
-                                    checked={levelFilter[level]}
-                                    onChange={handleLevelChange}
-                                    name={level}
-                                    sx={{
-                                        color: "#14213d", // unchecked color
-                                        '&.Mui-checked': {
-                                          color: "#14213d", // checked color
-                                        },
-                                        '& .MuiSvgIcon-root': {
-                                          fontSize: 16, // change size of the icon
-                                        }
-                                    }}
-                                    />
-                                }
-                                label={level.charAt(0).toUpperCase() + level.slice(1)}
-                                />
-                            ))}
-                            </FormGroup>
-                        </FormControl>
-                        {/* Type Filter */}
-                        <FormControl component="fieldset" sx={{ mt: 2 }}>
-                            <FormLabel component="legend">Type</FormLabel>
-                            <FormGroup>
-                            {['appetizer', 'entree', 'dessert'].map((type) => (
-                                <FormControlLabel
-                                key={type}
-                                control={
-                                    <Checkbox
-                                    checked={typeFilter[type]}
-                                    onChange={handleTypeChange}
-                                    name={type}
-                                    sx={{
-                                        color: "#14213d", // unchecked color
-                                        '&.Mui-checked': {
-                                          color: "#14213d", // checked color
-                                        },
-                                        '& .MuiSvgIcon-root': {
-                                          fontSize: 16, // change size of the icon
-                                        }
-                                    }}
-                                    />
-                                }
-                                label={type.charAt(0).toUpperCase() + type.slice(1)}
-                                />
-                            ))}
-                            </FormGroup>
-                        </FormControl>
-                        <div className="flex flex-row gap-1 w-full h-5 mt-2">
-                            <Button variant="contained" color="success" onClick={filter}>Confirm</Button>
-                            <Button variant="contained" color="primary" onClick={handleClose}>Cancel</Button>
-                        </div>
-                    </div>) :(<div></div>)
-                }
+    return (
+        <div className="relative w-full text-black">
+            {/* Search Bar */}
+            <div className="border-[2px] border-solid border-slate-500 flex flex-row items-center gap-3 rounded-[15px] w-full h-6 text-white">
+                <IoIosSearch className="text-lg md:text-xl font-bold ml-2" />
+                <input
+                    type="text"
+                    id="inputId"
+                    placeholder="Search for recipes or techniques"
+                    value={inputValue || ""}
+                    onChange={handleInputChange}
+                    onKeyDown={handleKeyPress}
+                    onFocus={handleFocus}
+                    onBlur={handleBlur}
+                    className="bg-[transparent] outline-none border-none w-full text-xs md:text-sm"
+                />
+                <div className="relative h-full">
+                    <button
+                        className="bg-slate-500 h-full rounded-r-[15px] w-10 flex items-center justify-center hover:bg-slate-700 text-white hover:text-slate-500"
+                        onClick={handleOpenFilter}
+                    >
+                        <CiFilter />
+                    </button>
+                    {openFilter && <FilterMenu handleClose={handleCloseFilter} />}
+                </div>
             </div>
+
+            {/* Suggestions Dropdown */}
+            {openSuggestions && suggestions.length > 0 && (
+                <ul className="absolute top-full left-0 w-full bg-white border border-gray-300 rounded-md shadow-lg z-10 max-h-40 overflow-auto">
+                    {suggestions.map((suggestion, index) => (
+                        <li
+                            key={index}
+                            className="flex items-center gap-3 px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                            onClick={() => handleSuggestionClick(suggestion)}
+                        >
+                            <img
+                                src={suggestion.image}
+                                alt={suggestion.name || suggestion.title}
+                                className="w-10 h-10 object-cover rounded-md"
+                            />
+                            <div>
+                                <p className="font-medium">{suggestion.name || suggestion.title}</p>
+                                <p className="text-xs text-gray-500 capitalize">{suggestion.type}</p>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
-}
+};
 
 export default Searchbar;

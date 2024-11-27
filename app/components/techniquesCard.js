@@ -17,7 +17,7 @@ export default function TechniquesCard({ technique }) {
         <p className="text-sm text-colour2 text-opacity-50">{technique.level}</p>
         <p className="text-colour2 mb-3">{technique.summary}</p>
         <Link 
-          href={technique.slug} 
+          href={`/techniques/${technique.slug}`}
           className="
             mt-auto p-1 
             bg-colour3 rounded-md shadow-md shadow-black/25

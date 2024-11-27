@@ -8,7 +8,7 @@ import Link from 'next/link';
 const RecipeCard = ({recipe}) => {
 
     return(
-        <div className="flex flex-col bg-colour4 p-2 gap-2 m-4 md:mr-6">
+        <div className="flex flex-col bg-colour4 p-2 gap-2">
             <div className="flex flex-col md:flex-row gap-2">
                 <div className="w-full h-full min-h-40">
                     <img 

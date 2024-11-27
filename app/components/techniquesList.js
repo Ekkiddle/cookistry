@@ -58,7 +58,7 @@ export default function TechniquesList({techniques, sortBy}) {
               {SORT_MODES[sortBy] && <CategoryInfoButton cat_name={sortBy} cat_option={group} />}
             </div>
             {/* list of techniques within category */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 z-0 gap-4 p-4">
+            <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
               {
                 grouped_techniques[group].map((technique) => (
                   <TechniquesCard technique={technique} />
