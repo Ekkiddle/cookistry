@@ -58,7 +58,7 @@ function Page({ params: paramsPromise }) {
     if (!recipe) return <p>Recipe not found</p>;
 
     return (
-        <div className="w-full flex justify-center px-2 lg:px-8">
+        <div className="w-full flex justify-center px-8 md:px-10">
             <NavBar />
 
             {/* Ingredient drawer component */}

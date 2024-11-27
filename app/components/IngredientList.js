@@ -30,8 +30,8 @@ function IngredientList({ ingredients = [], portions = 1 }) {
             <div className="pb-4">
                 {"Current portion size: "}{portions * multiplier}
             </div>
-            <div className="inline-flex items-center justify-left gap-3">
-                <div>
+            <div className="inline-flex items-top justify-left gap-3">
+                <div className="pt-0.5">
                     {"Adjust portions: "}
                 </div>
                 <div className="inline-flex gap-1">
