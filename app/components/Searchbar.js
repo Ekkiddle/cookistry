@@ -49,9 +49,9 @@ const Searchbar = () => {
 
         // Determine the URL based on the suggestion type
         const url = suggestion.slug
-            ? suggestion.name
-                ? `/recipes/${suggestion.slug}` // Navigate to recipe if 'name' exists
-                : `/technique/${suggestion.slug}` // Navigate to technique if 'name' does not exist
+            ? suggestion.type == "technique"
+                ? `/techniques/${suggestion.slug}` // Navigate to technique if 'name' does not exist
+                : `/recipes/${suggestion.slug}` // Navigate to recipe if 'name' exists
             : "/"; // Default fallback, you can customize this if needed
 
         router.push(url);
