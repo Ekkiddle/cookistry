@@ -49,26 +49,31 @@ const DetailedTechniques = ({ technique }) => {
 
 
       {/* Image Display */}
-      <div className="flex flex-col sm:flex-row gap-4 mt-4">
-        {technique.image1 && (
-          <Image
-            src={technique.image1}
-            alt="Technique step image 1"
-            width={300}
-            height={200}
-            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
-          />
-        )}
-        {technique.image2 && (
-          <Image
-            src={technique.image2}
-            alt="Technique step image 2"
-            width={300}
-            height={200}
-            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
-          />
-        )}
-      </div>
+<div className="flex flex-col sm:flex-row gap-4 mt-4">
+  {/* Extracting images from the description array */}
+  {technique.description.map((section, index) => (
+    <React.Fragment key={index}>
+      {section.image1 && (
+        <Image
+          src={section.image1} // Accessing image1
+          alt={`Technique step image 1 - ${index + 1}`}
+          width={300}
+          height={200}
+          className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
+        />
+      )}
+      {section.image2 && (
+        <Image
+          src={section.image2} // Accessing image2
+          alt={`Technique step image 2 - ${index + 1}`}
+          width={300}
+          height={200}
+          className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
+        />
+      )}
+    </React.Fragment>
+  ))}
+</div>
 
       {/* Suggested Recipes */}
       <h2 className="text-xl font-bold text-colour1 mt-6">Recipes with this Technique:</h2>
