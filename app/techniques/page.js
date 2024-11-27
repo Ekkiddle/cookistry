@@ -1,5 +1,6 @@
 "use client"
 
+import techniques from "@/public/techniques/techniques";
 import NavBar from "../components/navbar";
 import TechniquesList from "../components/techniquesList";
 import { useState } from "react";
@@ -23,12 +24,12 @@ export default function Page() {
           </label>
           <select id="sort" onChange={handleChange} className="p-1 text-colour2 bg-colour4 rounded-md">
             <option value="level">Level</option>
-            <option value="title">Title</option>
+            <option value="name">Title</option>
           </select>
         </div>
       </div>
       <div className="z-0">
-        <TechniquesList sortBy={sortMode} />
+        <TechniquesList techniques={techniques} sortBy={sortMode} />
       </div>
     </div>
   );
