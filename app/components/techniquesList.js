@@ -1,11 +1,10 @@
+import CategoryInfoButton from "./CategoryInfoButton"
 import TechniquesCard from "./techniquesCard"
-import techniques from '@/public/techniques/techniques'
 
-
-export default function TechniquesList({sortBy}) {
+export default function TechniquesList({techniques, sortBy}) {
   const SORT_MODES = {
     level: ['beginner', 'intermediate', 'advanced'],
-    title: undefined
+    name: undefined
   }
 
   // sort techniques according to sort mode
@@ -43,9 +42,22 @@ export default function TechniquesList({sortBy}) {
       {
         Object.keys(grouped_techniques).map((group => (
           <div key={group}>
-            <h2 className="sticky top-24 md:top-12 z-10 p-2 pl-6 text-xl font-bold bg-colour2 text-colour4">
-              {group.charAt(0).toUpperCase() + group.slice(1)}
-            </h2>
+            {/* category divider (sticks to top of page) */}
+            <div className="
+              sticky top-24 md:top-12
+              z-10
+              w-full
+              flex flex-row justify-between
+              p-2 pl-6 pr-4
+              bg-colour2
+            ">
+              <h2 className="text-xl font-bold text-colour4">
+                {group.charAt(0).toUpperCase() + group.slice(1)}
+              </h2>
+              {/* only include the info button if sortBy has specified categories */}
+              {SORT_MODES[sortBy] && <CategoryInfoButton cat_name={sortBy} cat_option={group} />}
+            </div>
+            {/* list of techniques within category */}
             <div className="grid grid-cols-1 lg:grid-cols-2 z-0 gap-4 p-4">
               {
                 grouped_techniques[group].map((technique) => (
