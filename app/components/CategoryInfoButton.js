@@ -12,26 +12,16 @@ export default function CategoryInfoButton({ cat_name, cat_option }) {
     return a.cat_name === cat_name;
   })
 
-  // get the next separator's DOM object if there is one
-  function getNextSep() {
-    let next_group = btn.current.parentElement.parentElement.parentElement.nextElementSibling;
-    if (next_group !== null) {
-      return(next_group.firstElementChild)
-    }
-    return(null)
-  }
-
   function summonPopup() {
-    let next_sep = getNextSep();
-    // temporarily lower next separator's z-index so popup shows up on top 
-    if (next_sep) next_sep.style.zIndex = 9;
+    // temporarily raise z-index of current separator div
+    // so popup appears overtop of the next one
+    btn.current.parentElement.parentElement.style.zIndex = 11;
     setShowPopup(true);
   }
 
   function closePopup() {
-    let neighbour_header = getNextSep();
     // restore previous z index
-    if (neighbour_header) neighbour_header.style.zIndex = 10;
+    btn.current.parentElement.parentElement.style.zIndex = 10;
     setShowPopup(false);
   }
 
