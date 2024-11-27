@@ -1,4 +1,5 @@
 import { useState } from "react";
+import pluralize from "pluralize";
 
 function toFraction(decimal) {
     const tolerance = 1.0E-6; // Tolerance level for approximation
@@ -15,7 +16,7 @@ function toFraction(decimal) {
     return `${numerator}/${denominator}`;
 }
 
-function IngredientList({ ingredients = [], onOutOfView, onInView }) {
+function IngredientList({ ingredients = [], portions = 1 }) {
 
     const [multiplier, setMultiplier] = useState(1);
 
@@ -24,12 +25,13 @@ function IngredientList({ ingredients = [], onOutOfView, onInView }) {
     };
 
     return (
-        // lg:flex lg:flex-row-reverse lg:flex-row lg:justify-between lg:items-start
         <div className=" w-full px-6 md:px-12">
-
             {/* (conditional in desktop view) Second Column: adjust portion */}
-            <div className="inline-flex items-center justify-left gap-3">
-                <div>
+            <div className="pb-4">
+                {"Current portion size: "}{portions * multiplier}
+            </div>
+            <div className="inline-flex items-top justify-left gap-3">
+                <div className="pt-0.5">
                     {"Adjust portions: "}
                 </div>
                 <div className="inline-flex gap-1">
@@ -61,6 +63,9 @@ function IngredientList({ ingredients = [], onOutOfView, onInView }) {
                         <ul className="ml-4 list-disc text-gray-900">
                             {ingredientGroup.list.map((ingredient, idx) => {
                                 const adjustedAmount = ingredient.amount * multiplier;
+                                const pluralizedUnit = adjustedAmount > 1 && ingredient.amountType
+                                    ? pluralize(ingredient.amountType)
+                                    : ingredient.amountType;
                                 // Display as fraction if it's not a whole number
                                 const displayAmount = Number.isInteger(adjustedAmount)
                                     ? adjustedAmount
@@ -68,7 +73,7 @@ function IngredientList({ ingredients = [], onOutOfView, onInView }) {
 
                                 return (
                                     <li key={idx} className="text-gray-900">
-                                        {displayAmount} {ingredient.amountType || ""} {ingredient.ingredient}
+                                        {displayAmount} {pluralizedUnit || ""} {ingredient.ingredient}
                                     </li>
                                 );
                             })}
