@@ -8,6 +8,7 @@ const recipes = [
     level: "intermediate",
     image: "/recipes/tacos.jpg", // Path to image goes here
     video: "", // Path to video goes here
+    portions: 8,
     ingredients: [
       {
         listname: "Ingredients",
@@ -35,6 +36,7 @@ const recipes = [
     level: "beginner",
     image: "/recipes/crispyBrocoli.jpg",
     video: "",
+    portions: 8,
     ingredients: [
       {
         listname: "Ingredients",
@@ -62,6 +64,7 @@ const recipes = [
     level: "beginner",
     image: "/recipes/macAndCheese.jpg", // Path to image goes here
     video: "", // Path to video goes here
+    portions: 4,
     ingredients: [
       {
         listname: "Ingredients",
@@ -96,6 +99,7 @@ const recipes = [
     level: "intermediate",
     image: "/recipes/pumpkinPie.jpg",
     video: "",
+    portions: 4,
     ingredients: [
       {
         listname: "Ingredients",
@@ -132,6 +136,7 @@ const recipes = [
     level: "advanced",
     image: "/recipes/chickenCurry.jpg",
     video: "",
+    portions: 6,
     ingredients: [
       {
         listname: "Main Ingredients",
@@ -158,6 +163,7 @@ const recipes = [
     level: "beginner",
     image: "/recipes/garlicBread.jpg",
     video: "",
+    portions: 8,
     ingredients: [
       {
         listname: "Main Ingredients",
@@ -183,6 +189,7 @@ const recipes = [
     level: "beginner",
     image: "/recipes/fruitSalad.jpg",
     video: "",
+    portions: 8,
     ingredients: [
       {
         listname: "Main Ingredients",
@@ -207,6 +214,7 @@ const recipes = [
     level: "intermediate",
     image: "/recipes/meatLoaf.jpg",
     video: "",
+    portions: 10,
     ingredients: [
       {
         listname: "Meatloaf Ingredients",
