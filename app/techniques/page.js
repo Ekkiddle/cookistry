@@ -14,7 +14,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
-      <div className="z-10"><NavBar /></div>
+      <div className="z-30"><NavBar /></div>
       <div className="flex justify-between pt-28 md:pt-16 pb-4 px-5">
         <h1 className="text-2xl font-bold text-colour2">
           Techniques

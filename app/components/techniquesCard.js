@@ -16,12 +16,18 @@ export default function TechniquesCard({ technique }) {
         <h1 className="text-lg font-bold text-colour1">{technique.name}</h1>
         <p className="text-sm text-colour2 text-opacity-50">{technique.level}</p>
         <p className="text-colour2 mb-3">{technique.summary}</p>
-        {/* <Link href="" className="mt-auto p-1 text-center bg-colour3 rounded-md text-colour1 shadow-md">
+        <Link 
+          href={technique.slug} 
+          className="
+            mt-auto p-1 
+            bg-colour3 rounded-md shadow-md shadow-black/25
+            text-center text-sm text-colour1"
+        >
+          SEE TECHNIQUE DETAILS
+        </Link>
+        {/* <Button variant="contained" className="mt-auto rounded-md text-colour1 bg-colour3" size="small">
           See Technique Details
-        </Link> */}
-        <Button variant="contained" className="mt-auto rounded-md text-colour1 bg-colour3" size="small">
-          See Technique Details
-        </Button>
+        </Button> */}
       </div>
     </div>
   )
