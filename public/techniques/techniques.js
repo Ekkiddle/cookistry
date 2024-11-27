@@ -1,11 +1,10 @@
 // techniques.js
 const techniques = [
   {
-    title: "Boil water",
-    slug: "boil_water",
+    name: "Boil water",
+    slug: "boil-water",
     image: "/techniques/boil-water.jpg",
     imageAlt: "Boiling water in pot on burner. Photo by Anna Shvets from Pexels.com.",
-    name: "Boil water",
     level: "beginner",
     summary: "Boiling water involves selecting the right pot size, possibly salting the water, and using the right temperature.",
     main_video: "https://www.youtube.com/watch?v=D_TX67X2ddU",
@@ -25,11 +24,10 @@ const techniques = [
     recipes: ["Boiled eggs", "Pasta marinara"] // list of recipes using this technique
   },
   {
-    title: "Fold in",
-    slug : "fold_in",
+    name: "Fold in",
+    slug : "fold-in",
     image: "/techniques/fold-in.jpg",
     imageAlt: "A person mixing dough using a wooden spatula in a stainless bowl. Photo by Ron Lach from Pexels.com.",
-    name: "Fold in",
     level: "intermediate",
     summary: "A technique for carefully combining two substances of different thickness and weight into one (relatively) smooth mixture.",
     main_video: "https://www.youtube.com/watch?v=7To3giV62rg", // path to video here
@@ -43,9 +41,10 @@ const techniques = [
     recipes: ["Pumpkin pie", " Strawberry cheese cake "] // list of recipes using this technique
   },
   {
+    name: "Baste",
+    slug: "baste",
     image: "/techniques/baste.jpg",
     imageAlt: "Hand-brushing roasted chicken. Photo by RDNE Stock project from Pexels.com.",
-    name: "Baste",
     level: "advanced",
     summary: "A meat cooking technique in which the meat is cooked with its own juices or a preparation such as a sauce or marinade.",
     main_video: "", // path to video here
@@ -59,9 +58,10 @@ const techniques = [
     recipes: [""] // list of recipes using this technique
   },
   {
+    name: "Saute",
+    slug: "saute",
     image: "/techniques/saute.jpg",
     imageAlt: "Vegetable dish on frying pan. Photo by Ela Haney from Pexels.com.",
-    name: "Saute",
     level: "beginner",
     summary: "Quickly frying food in a small amount of oil or fat over medium to high heat.",
     main_video: "", // path to video here
