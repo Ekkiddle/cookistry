@@ -85,7 +85,7 @@ const SearchResults = ({ params: paramsPromise }) => {
                             {groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}
                         </h2>
                         {/* Group Content */}
-                        <div className="flex flex-col gap-6 mt-4">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
                             {groupedData[groupKey].map((item, index) =>
                                 item.type === "technique" ? (
                                     <TechniquesCard key={index} technique={item} />

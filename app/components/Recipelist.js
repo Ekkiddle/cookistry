@@ -3,6 +3,7 @@ import React from 'react';
 import recipes from '@/public/recipes/recipes'; // Adjust the path as necessary
 import RecipeCard from './RecipeCard';
 import { useFilter } from './Filter';
+import CategoryInfoButton from './CategoryInfoButton';
 
 const RecipeList = ({ sortBy }) => {
   const sortOrder = {
@@ -45,12 +46,15 @@ const RecipeList = ({ sortBy }) => {
     <div>
       {Object.keys(groupedRecipes).map((key) => (
         <div className="flex flex-col mb-8">
-            <div className="sticky top-24 md:top-12 bg-colour2 z-10 shadow-xl p-2 pl-6">
+            <div className="sticky flex flex-row justify-between align-center top-24 md:top-12 bg-colour2 z-10 shadow-xl p-2 pl-6">
                 <h2 className="text-colour5 font-bold text-2xl">{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
+                {<CategoryInfoButton cat_name={sortBy} cat_option={key} />}
             </div>
-          {groupedRecipes[key].map((recipe) => (
-            <RecipeCard recipe={recipe} />
-          ))}
+            <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
+              {groupedRecipes[key].map((recipe) => (
+                <RecipeCard recipe={recipe} />
+              ))}
+            </div>
         </div>
       ))}
     </div>
