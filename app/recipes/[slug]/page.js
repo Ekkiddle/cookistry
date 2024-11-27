@@ -93,7 +93,9 @@ function Page({ params: paramsPromise }) {
                     <div className="sticky top-24 md:top-12 bg-colour2 z-5 shadow-xl">
                         <h2 className="m-4 text-colour5 font-bold text-2xl">{"Ingredients"}</h2>
                     </div>
-                    <IngredientList ingredients={recipe.ingredients} />
+                    <IngredientList 
+                        portions={recipe.portions}
+                        ingredients={recipe.ingredients} />
                 </div>
 
                 {/* Instructions Section */}
