@@ -58,7 +58,7 @@ const recipes = [
   },
   {
     name: "Baked Mac and Cheese",
-    slug: "backed-mac-and-cheese",
+    slug: "baked-mac-and-cheese",
     author: "",
     type: "entree",
     level: "beginner",
