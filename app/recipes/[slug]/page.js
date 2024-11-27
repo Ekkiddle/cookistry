@@ -10,8 +10,7 @@ import IngredientDrawer from "../../components/IngredientDrawer";
 import recipes from "@/public/recipes/recipes";
 import { useRouter } from "next/navigation";
 
-function page({ params: paramsPromise }) {
-
+function Page({ params: paramsPromise }) {
     const params = React.use(paramsPromise);
     const { slug } = params;
     const recipe = recipes.find((recipe) => recipe.slug === slug);
@@ -29,48 +28,29 @@ function page({ params: paramsPromise }) {
     const instructionsRef = useRef(null);
 
     useEffect(() => {
-        const handleVisibility = () => {
-            setShowDrawer(false);
-        }
+        const ingredientsElement = ingredientsRef.current;
+        const instructionsElement = instructionsRef.current;
 
         const ingredientsObserver = new IntersectionObserver(
             ([entry]) => {
-                if (!entry.isIntersecting) {
-                    // Ingredients section is off-screen
-                    setShowDrawer(true);
-                } else {
-                    // Ingredients section is in view
-                    setShowDrawer(false);
-                }
+                setShowDrawer(!entry.isIntersecting);
             },
-            {
-                root: null,
-                threshold: 0,
-            }
+            { root: null, threshold: 0 }
         );
 
         const instructionsObserver = new IntersectionObserver(
             ([entry]) => {
-                if (entry.isIntersecting) {
-                    // Instructions section is in view
-                    setShowDrawer(true);
-                } else {
-                    // Instructions section is not in view
-                    setShowDrawer(false);
-                }
+                setShowDrawer(entry.isIntersecting);
             },
-            {
-                root: null,
-                threshold: 0.1, // Trigger when at least 10% of the instructions section is in view
-            }
+            { root: null, threshold: 0.1 }
         );
 
-        if (ingredientsRef.current) ingredientsObserver.observe(ingredientsRef.current);
-        if (instructionsRef.current) instructionsObserver.observe(instructionsRef.current);
+        if (ingredientsElement) ingredientsObserver.observe(ingredientsElement);
+        if (instructionsElement) instructionsObserver.observe(instructionsElement);
 
         return () => {
-            if (ingredientsRef.current) ingredientsObserver.unobserve(ingredientsRef.current);
-            if (instructionsRef.current) instructionsObserver.unobserve(instructionsRef.current);
+            if (ingredientsElement) ingredientsObserver.unobserve(ingredientsElement);
+            if (instructionsElement) instructionsObserver.unobserve(instructionsElement);
         };
     }, []);
 
@@ -128,4 +108,4 @@ function page({ params: paramsPromise }) {
     );
 }
 
-export default page
+export default Page;
