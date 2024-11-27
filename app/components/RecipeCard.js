@@ -1,6 +1,7 @@
 // recipe card component for use in the recipe list on the main page of webapp.
 
 import { Button } from "@mui/material";
+import Link from 'next/link';
 
 // takes a single recipe as a prop to the component. This component is also responsible for navigating to
 // the recipe page for that specific recipe.
@@ -13,7 +14,7 @@ const RecipeCard = ({recipe}) => {
                     <img 
                         src={recipe.image} 
                         alt="Recipe" 
-                        className="w-full h-full object-cover max-h-40" 
+                        className="w-full h-full object-cover max-h-40 md:max-h-48" 
                     />
                 </div>
                 <div className="w-full flex flex-col">
@@ -29,11 +30,14 @@ const RecipeCard = ({recipe}) => {
                         <li key={index}>{ingredient.amount} {ingredient.amountType} of {ingredient.ingredient}</li>
                         ))}
                     </ul>
+                    <Link href={`/recipes/${recipe.slug}`} passHref>
+                        <div className="bg-colour3 flex flex-col mt-2 rounded-md">
+                            <Button variant="contained" color="none" size="small">Go to Recipe Page</Button>
+                        </div>
+                    </Link>
                 </div>
             </div>
-            <div className="bg-colour3 flex flex-col">
-                <Button variant="contained" color="none" size="small">Go to Recipe Page</Button>
-            </div>
+            
         </div>
     );
 }
