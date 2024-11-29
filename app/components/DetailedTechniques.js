@@ -13,12 +13,13 @@ const DetailedTechniques = ({ technique }) => {
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
-      {/* Flex container for button and title stacked vertically */}
+      
       <div className="flex flex-col items-start pb-4">
-        {/* Back to Technique list link */}
+        
         <Link href="/DetailedTechniques" className="text-sm text-colour2 font-bold hover:text-colour3 flex items-center mb-1">
           <IoIosArrowBack className="mr-2" /> Back to Technique List
         </Link>
+
         {/* Title of the technique */}
         <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
       </div>
@@ -74,10 +75,13 @@ const DetailedTechniques = ({ technique }) => {
       {/* Suggested Recipes */}
       <h2 className="text-xl font-bold text-colour1 mt-6">Recipes with this Technique:</h2>
       <ul className="list-disc pl-6 text-colour1">
-        {technique.recipes.map((recipe, index) => (
-          <li key={index} className="mt-1">{recipe}</li>
-          
-        ))}
+      {technique.recipes.map((recipe, index) => (
+      <li key={index} className="mt-1">
+        <Link className="text-blue-500 hover:text-blue-700 underline" href={`/recipes/${recipe.slug}`}>{recipe.name}
+        
+        </Link>
+      </li>
+      ))}
       </ul>
     </div>
     </div>

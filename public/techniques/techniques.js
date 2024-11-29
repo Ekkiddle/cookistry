@@ -21,7 +21,9 @@ const techniques = [
         video: "", // optional
       }
     ],
-    recipes: ["Boiled eggs", "Pasta marinara"] // list of recipes using this technique
+    recipes: [
+      { name: "mac and cheese ", slug: "backed-mac-and-cheese" },
+    ]
   },
   {
     name: "Fold in",
