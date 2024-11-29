@@ -1,15 +1,18 @@
-// components/DetailedTechniques.js
+
 import React from "react";
 import Button from '@mui/material/Button';
 
-import Link from 'next/link'; // Import Link from Next.js
-import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
+import Link from 'next/link';
+import { IoIosArrowBack } from 'react-icons/io'; // back icon from react 
 
 import Image from "next/image";
 
 const DetailedTechniques = ({ technique }) => {
 
+
+  {/* MAKE SURE TO FIX THIS */}
   const combinedText = technique.description.map(section => section.text).join(" ");
+
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
@@ -20,23 +23,22 @@ const DetailedTechniques = ({ technique }) => {
           <IoIosArrowBack className="mr-2" /> Back to Technique List
         </Link>
 
-        {/* Title of the technique */}
         <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
       </div>
 
 
-      {/* the skill level  */}
       <h2 className="text-lg font-semibold text-colour3">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
 
 
-      {/* Combined Description Text */}
+      {/* MAKE SURE TO FIX THIS -------------*/}
+      {/* The combined text to make it look like a paragraph ( maybe will find another way to do it ) */}
       <div className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
         <h1 className="text-colour1 font-bold" > Summary</h1>
         <p className="text-colour1">{combinedText}</p>
       </div>
 
 
-      {/* Main Video Display */}
+      {/* video */}
       {technique.main_video && (
         <div className="mt-4">
           <iframe
@@ -44,13 +46,12 @@ const DetailedTechniques = ({ technique }) => {
             height="315"
             src={technique.main_video.replace("watch?v=", "embed/")} 
             title="Main Video"
-            allowFullScreen
           ></iframe>
         </div>
       )}
 
 
-      {/* Image Display */}
+      {/* Image 1 and 2  */}
       <div className="flex flex-col sm:flex-row gap-4 mt-4">
         {technique.image1 && (
           <Image
@@ -78,7 +79,6 @@ const DetailedTechniques = ({ technique }) => {
       {technique.recipes.map((recipe, index) => (
       <li key={index} className="mt-1">
         <Link className="text-blue-500 hover:text-blue-700 underline" href={`/recipes/${recipe.slug}`}>{recipe.name}
-        
         </Link>
       </li>
       ))}
