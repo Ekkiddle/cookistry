@@ -51,18 +51,18 @@ const DetailedTechniques = ({ technique }) => {
       )}
 
 
-      {/* Image 1 and 2  */}
+      {/* rendering Image 1 and 2  */}
       <div className="flex flex-col sm:flex-row gap-4 mt-4">
-        {technique.description.image1 && (
+        {technique.description && (
           <Image
-            src={technique.description.image1}
+            src={technique.image1}
             alt="Technique step image 1"
             width={300}
             height={200}
             className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
           />
         )}
-        {technique.description.image2 && (
+        {technique.image2 && (
           <Image
             src={technique.description.image2}
             alt="Technique step image 2"
