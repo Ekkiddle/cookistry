@@ -6,13 +6,13 @@ import Link from 'next/link';
 import { IoIosArrowBack } from 'react-icons/io'; // back icon from react 
 
 import Image from "next/image";
+import techniques from "@/public/techniques/techniques";
 
 const DetailedTechniques = ({ technique }) => {
 
 
   {/* MAKE SURE TO FIX THIS */}
-  const combinedText = technique.description.map(section => section.text).join(" ");
-
+  
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
@@ -32,12 +32,17 @@ const DetailedTechniques = ({ technique }) => {
 
       {/* MAKE SURE TO FIX THIS -------------*/}
       {/* The combined text to make it look like a paragraph ( maybe will find another way to do it ) */}
-      <div className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
-        <h1 className="text-colour1 font-bold" > Summary</h1>
-        <p className="text-colour1">{combinedText}</p>
-      </div>
+      {technique.description.map((section, index) =>(
 
-
+        
+        <div key ={index} className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
+          <h1 className="text-colour1 font-bold" > Summary</h1>
+          {section.text.map((text, textIndex) => (
+            <p key={textIndex} className="text-gray-700">{text}</p>
+          ))}
+        </div>
+      ))}
+      
       {/* video */}
       {technique.main_video && (
         <div className="mt-4">
@@ -52,25 +57,30 @@ const DetailedTechniques = ({ technique }) => {
 
 
       {/* rendering Image 1 and 2  */}
-      <div className="flex flex-col sm:flex-row gap-4 mt-4">
-        {technique.description && (
-          <Image
-            src={technique.image1}
+      <div className="flex flex-col gap-4 mt-3 w-full">
+        {technique.description.map((desc, index) => ( 
+        <div key = {index} className="flex gap-3" >  
+            {desc.image1 && (
+            <Image
+            src={desc.image1}
             alt="Technique step image 1"
             width={300}
             height={200}
-            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
-          />
-        )}
-        {technique.image2 && (
-          <Image
-            src={technique.description.image2}
+            className="rounded-lg border border-colour2 object-cover w-1/2"
+            />
+            )}
+
+            {desc.image2 && (
+            <Image
+            src={desc.image2}
             alt="Technique step image 2"
             width={300}
             height={200}
-            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
-          />
-        )}
+            className="rounded-lg border border-colour2 object-cover w-1/2 "
+            />
+            )}
+          </div>
+          ))}
       </div>
 
       {/* Suggested Recipes */}
