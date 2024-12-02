@@ -1,29 +1,30 @@
 "use client"
+
 // components/DetailedTechniques.js
 import React from "react";
-import { useRouter } from "next/navigation";
-import Button from '@mui/material/Button';
-
-import Link from 'next/link'; // Import Link from Next.js
 import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
 const DetailedTechniques = ({ technique }) => {
+
   const router = useRouter();
+
   const combinedText = technique.description.map(section => section.text).join(" ");
   return (
-    <div className="flex flex-col w-full min-h-screen bg-colour5 p-4">
+    <div className="flex flex-col w-full min-h-screen bg-colour5">
+      <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
       {/* Flex container for button and title stacked vertically */}
       <div className="flex flex-col items-start pb-4">
         {/* Back to Search Button */}
-        <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
-                    <u className="flex flex-row items-center mb-0">
-                        <IoIosArrowBack /> {"Back to Search"}
-                    </u>
-                </button>
+          <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
+            <u className="flex flex-row items-center mb-0">
+              <IoIosArrowBack /> {"Back to Search"}
+            </u>
+          </button>
         {/* Title of the technique */}
-        <h1 className="text-3xl font-bold text-colour1 mt-4">{technique.name}</h1>
+        <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
       </div>
 
 
@@ -53,31 +54,26 @@ const DetailedTechniques = ({ technique }) => {
 
 
       {/* Image Display */}
-<div className="flex flex-col sm:flex-row gap-4 mt-4">
-  {/* Extracting images from the description array */}
-  {technique.description.map((section, index) => (
-    <React.Fragment key={index}>
-      {section.image1 && (
-        <Image
-          src={section.image1} // Accessing image1
-          alt={`Technique step image 1 - ${index + 1}`}
-          width={300}
-          height={200}
-          className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
-        />
-      )}
-      {section.image2 && (
-        <Image
-          src={section.image2} // Accessing image2
-          alt={`Technique step image 2 - ${index + 1}`}
-          width={300}
-          height={200}
-          className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
-        />
-      )}
-    </React.Fragment>
-  ))}
-</div>
+      <div className="flex flex-col sm:flex-row gap-4 mt-4">
+        {technique.image1 && (
+          <Image
+            src={technique.image1}
+            alt="Technique step image 1"
+            width={300}
+            height={200}
+            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
+          />
+        )}
+        {technique.image2 && (
+          <Image
+            src={technique.image2}
+            alt="Technique step image 2"
+            width={300}
+            height={200}
+            className="rounded-lg border border-colour2 object-cover w-full sm:w-1/2" // Full width on mobile, half width on larger screens
+          />
+        )}
+      </div>
 
       {/* Suggested Recipes */}
       <h2 className="text-xl font-bold text-colour1 mt-6">Recipes with this Technique:</h2>
@@ -87,6 +83,7 @@ const DetailedTechniques = ({ technique }) => {
           
         ))}
       </ul>
+    </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { FilterProvider } from "./components/Filter";
 import NavBar from "./components/navbar";
+import JumpToTop from "./components/JumpToTop";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -23,13 +24,19 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <FilterProvider>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <NavBar />
-        <div className="w-full h-24 md:h-12"></div>
-        {children}
-      </body>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <div className="flex flex-col min-h-screen">
+              <NavBar />
+              {/* Spacer div for navigation */}
+              <div className="w-full h-24 md:h-12"></div>
+              {/* Main content */}
+              <JumpToTop />
+              <div className="flex-1">{children}</div>
+              {/* Footer */}
+              <div className="w-full h-12 bg-colour2 mt-auto"></div>
+          </div>
+        </body>
       </FilterProvider>
     </html>
   );
