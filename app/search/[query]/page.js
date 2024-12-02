@@ -64,7 +64,7 @@ const SearchResults = ({ params: paramsPromise }) => {
         <div className="">
             {/* Sort By Options */}
             <div className="mb-4 p-4 flex justify-between items-center">
-                <h1 className="text-xl font-bold">Showing results for: "{query}"</h1>
+                <h1 className="text-xl font-bold">Showing results for: &quot;{query}&quot;</h1>
                 <select
                     className="border rounded-md px-3 py-1"
                     value={sortBy}

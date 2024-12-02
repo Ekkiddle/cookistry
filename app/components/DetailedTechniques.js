@@ -1,13 +1,15 @@
+"use client"
+
 // components/DetailedTechniques.js
 import React from "react";
-import Button from '@mui/material/Button';
-
-import Link from 'next/link'; // Import Link from Next.js
 import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
+import { useRouter } from "next/navigation";
 
 import Image from "next/image";
 
 const DetailedTechniques = ({ technique }) => {
+
+  const router = useRouter();
 
   const combinedText = technique.description.map(section => section.text).join(" ");
   return (
@@ -15,10 +17,12 @@ const DetailedTechniques = ({ technique }) => {
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
       {/* Flex container for button and title stacked vertically */}
       <div className="flex flex-col items-start pb-4">
-        {/* Back to Technique list link */}
-        <Link href="/DetailedTechniques" className="text-sm text-colour2 font-bold hover:text-colour3 flex items-center mb-1">
-          <IoIosArrowBack className="mr-2" /> Back to Technique List
-        </Link>
+        {/* Back to Search Button */}
+          <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
+            <u className="flex flex-row items-center mb-0">
+              <IoIosArrowBack /> {"Back to Search"}
+            </u>
+          </button>
         {/* Title of the technique */}
         <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
       </div>
