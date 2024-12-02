@@ -41,20 +41,26 @@ export default function JumpToTop() {
       {/* detector for scroll position */}
       <div ref={detector} className="absolute top-0 h-screen w-full z-[-1]"></div>
       {/* for positioning button relative to screen */}
-      <div ref={btn} onClick={toTop} className="
-        group z-20
-        hidden fixed left-3 bottom-3
-        hover:cursor-pointer"
+      <div ref={btn} className="
+        z-20
+        hidden fixed bottom-3 left-1/2
+        "
       >
         {/* for positioning button components relative to each other */}
-        <div className="h-6 flex flex-row items-stretch">
+        <div onClick={toTop} className="
+          group hover:cursor-pointer
+          h-6 md:h-8 translate-x-[-50%]
+          flex flex-row items-stretch
+        ">
           {/* arrow icon */}
           <svg viewBox="0 0 10 10"
             className=" z-[1]
-              p-1 
-              stroke-colour3 stroke-1 
-              bg-colour5 shadow-md shadow-colour2/50
-              rounded-l-md md:rounded-md md:group-hover:rounded-r-none" 
+              p-1 md:px-3
+              stroke-colour5 stroke-1
+              bg-colour2 shadow-md shadow-colour1/75
+              rounded-l-md md:rounded-full md:group-hover:rounded-r-none
+              md:duration-100
+              md:translate-x-[105%] md:group-hover:translate-x-0" 
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M1 1 L9 1 M1 7 L5 3 L9 7 M5 3 L5 9" fillOpacity="0"
@@ -64,9 +70,9 @@ export default function JumpToTop() {
           {/* text popup */}
           <div className=" z-[0]
             px-1
-            bg-colour3 rounded-r-md shadow-md shadow-colour2/50
-            text-sm text-colour5
-            md:origin-left md:duration-100
+            bg-colour3 rounded-r-md md:rounded-r-full shadow-md shadow-colour1/75
+            text-sm md:text-lg text-colour5
+            md:duration-100
             md:scale-x-0 md:group-hover:scale-x-100"
           >
             Scroll to Top
