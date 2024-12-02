@@ -1,3 +1,5 @@
+"use client"
+
 // components/DetailedTechniques.js
 import React from "react";
 import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
@@ -17,9 +19,9 @@ const DetailedTechniques = ({ technique }) => {
       <div className="flex flex-col items-start pb-4">
         {/* Back to Search Button */}
           <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
-                    <u className="flex flex-row items-center mb-0">
-                        <IoIosArrowBack /> {"Back to Search"}
-                    </u>
+            <u className="flex flex-row items-center mb-0">
+              <IoIosArrowBack /> {"Back to Search"}
+            </u>
           </button>
         {/* Title of the technique */}
         <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
