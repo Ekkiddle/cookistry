@@ -7,6 +7,7 @@ import IngredientList from '../../components/IngredientList';
 import StepsList from '../../components/StepsList';
 import RecipeSummary from '../../components/RecipeSummary';
 import IngredientDrawer from "../../components/IngredientDrawer";
+import FeedbackForm from "@/app/components/FeedbackForm";
 import recipes from "@/public/recipes/recipes";
 import { useRouter } from "next/navigation";
 
@@ -30,17 +31,17 @@ function Page({ params: paramsPromise }) {
     useEffect(() => {
         const ingredientsElement = ingredientsRef.current;
         const instructionsElement = instructionsRef.current;
-    
+
         // State to track visibility of each section
         let isIngredientsVisible = true;
         let isInstructionsVisible = false;
-    
+
         // Intersection Observer callback
         const handleIntersection = () => {
             // Set `setShowDrawer` based on both visibility states
             setShowDrawer(!isIngredientsVisible && isInstructionsVisible);
         };
-    
+
         const ingredientsObserver = new IntersectionObserver(
             ([entry]) => {
                 isIngredientsVisible = entry.isIntersecting; // Update state for ingredients
@@ -48,7 +49,7 @@ function Page({ params: paramsPromise }) {
             },
             { root: null, threshold: 0 }
         );
-    
+
         const instructionsObserver = new IntersectionObserver(
             ([entry]) => {
                 isInstructionsVisible = entry.isIntersecting; // Update state for instructions
@@ -56,24 +57,24 @@ function Page({ params: paramsPromise }) {
             },
             { root: null, threshold: 0.1 }
         );
-    
+
         // Observe elements
         if (ingredientsElement) ingredientsObserver.observe(ingredientsElement);
         if (instructionsElement) instructionsObserver.observe(instructionsElement);
-    
+
         // Cleanup on unmount
         return () => {
             if (ingredientsElement) ingredientsObserver.unobserve(ingredientsElement);
             if (instructionsElement) instructionsObserver.unobserve(instructionsElement);
         };
     }, []);
-    
+
 
     // Early return if recipe is not found
     if (!recipe) return <p>Recipe not found</p>;
 
     return (
-        <div className="w-full flex justify-center px-2 lg:px-8">
+        <div className="w-full flex justify-center px-2 space-y-4 lg:px-8">
 
             {/* Ingredient drawer component */}
             <div className="z-40 px-0">
@@ -96,6 +97,7 @@ function Page({ params: paramsPromise }) {
                         recipeTitle={recipe.name}
                         recipeAuthor={recipe.author}
                         recipeLevel={recipe.level}
+                        recipeRating={recipe.rating}
                         recipeType={recipe.type}
                         recipeImage={recipe.image}
                         showMedia={showMedia}
@@ -107,7 +109,7 @@ function Page({ params: paramsPromise }) {
                     <div className="sticky top-24 md:top-12 bg-colour2 z-5 shadow-xl">
                         <h2 className="m-4 text-colour5 font-bold text-2xl">{"Ingredients"}</h2>
                     </div>
-                    <IngredientList 
+                    <IngredientList
                         portions={recipe.portions}
                         ingredients={recipe.ingredients} />
                 </div>
@@ -118,6 +120,14 @@ function Page({ params: paramsPromise }) {
                         <h2 className="m-4 text-colour5 font-bold text-2xl">{"Instructions"}</h2>
                     </div>
                     <StepsList instructions={recipe.instructions} showMedia={showMedia} />
+                </div>
+
+                {/* Feedback Form Section */}
+                <div>
+                    <div className="sticky top-24 z-10 md:top-12 bg-colour2 shadow-xl">
+                        <h2 className="m-4 text-colour5 font-bold text-2xl">{"Feedback"}</h2>
+                    </div>
+                    <FeedbackForm />
                 </div>
             </div>
         </div>

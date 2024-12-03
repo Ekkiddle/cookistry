@@ -3,9 +3,10 @@ const recipes = [
   {
     name: "Tacos",
     slug: "tacos",
-    author: "",
+    author: "Rachel Ray",
     type: "entree",
     level: "intermediate",
+    rating: 4,
     image: "/recipes/tacos.jpg", // Path to image goes here
     video: "", // Path to video goes here
     portions: 8,
@@ -18,7 +19,7 @@ const recipes = [
           { ingredient: "taco shells", amount: 8, amountType: "" },
           { ingredient: "shredded lettuce", amount: 1, amountType: "cup" },
           { ingredient: "shredded cheese", amount: 1, amountType: "cup" },
-          { ingredient: "salsa", amount: 0.5, amountType: "cup" },
+          { ingredient: "salsa", amount: 1/2, amountType: "cup" },
         ],
       },
     ],
@@ -31,9 +32,10 @@ const recipes = [
   {
     name: "Crispy Broccoli and Cheese",
     slug: "crispy-broccoli-and-cheese",
-    author: "",
+    author: "Jamie Oliver",
     type: "appetizer",
     level: "beginner",
+    rating: 3,
     image: "/recipes/crispyBrocoli.jpg",
     video: "",
     portions: 8,
@@ -44,8 +46,8 @@ const recipes = [
           { ingredient: "broccoli florets", amount: 2, amountType: "cups" },
           { ingredient: "shredded cheddar cheese", amount: 1, amountType: "cup" },
           { ingredient: "olive oil", amount: 2, amountType: "tbsp" },
-          { ingredient: "salt", amount: 0.5, amountType: "tsp" },
-          { ingredient: "black pepper", amount: 0.5, amountType: "tsp" },
+          { ingredient: "salt", amount: 1/2, amountType: "tsp" },
+          { ingredient: "black pepper", amount: 1/2, amountType: "tsp" },
         ],
       },
     ],
@@ -59,9 +61,10 @@ const recipes = [
   {
     name: "Baked Mac and Cheese",
     slug: "backed-mac-and-cheese",
-    author: "",
+    author: "Gordon Ramsey",
     type: "entree",
     level: "beginner",
+    rating: 4,
     image: "/recipes/macAndCheese.jpg", // Path to image goes here
     video: "", // Path to video goes here
     portions: 4,
@@ -73,10 +76,10 @@ const recipes = [
           { ingredient: "shredded cheddar cheese", amount: 2, amountType: "cups" },
           { ingredient: "milk", amount: 1, amountType: "cup" },
           { ingredient: "butter", amount: 2, amountType: "tbsp" },
-          { ingredient: "salt", amount: 0.25, amountType: "tsp" },
-          { ingredient: "black pepper", amount: 0.5, amountType: "tsp" },
+          { ingredient: "salt", amount: 1/4, amountType: "tsp" },
+          { ingredient: "black pepper", amount: 1/2, amountType: "tsp" },
           { ingredient: "paprika", amount: 1, amountType: "tsp" },
-          { ingredient: "bread crumbs", amount: 0.5, amountType: "cup" }
+          { ingredient: "bread crumbs", amount: 1/2, amountType: "cup" }
         ]
       }
     ],
@@ -94,9 +97,10 @@ const recipes = [
   {
     name: "Pumpkin Pie",
     slug: "pumpkin-pie",
-    author: "",
+    author: "Guy Fieri",
     type: "dessert",
     level: "intermediate",
+    rating: 5,
     image: "/recipes/pumpkinPie.jpg",
     video: "",
     portions: 4,
@@ -107,10 +111,10 @@ const recipes = [
           { ingredient: "pumpkin puree", amount: 1, amountType: "can" },
           { ingredient: "heavy cream", amount: 1, amountType: "cup" },
           { ingredient: "eggs", amount: 2, amountType: "" },
-          { ingredient: "sugar", amount: 0.75, amountType: "cup" },
+          { ingredient: "sugar", amount: 3/4, amountType: "cup" },
           { ingredient: "ground cinnamon", amount: 1, amountType: "tsp" },
           { ingredient: "ground ginger", amount: 0.5, amountType: "tsp" },
-          { ingredient: "ground cloves", amount: 0.25, amountType: "tsp" },
+          { ingredient: "ground cloves", amount: 1/4, amountType: "tsp" },
           { ingredient: "pie crust", amount: 1, amountType: "9-inch" },
         ],
       },
@@ -131,9 +135,10 @@ const recipes = [
   {
     name: "Chicken Curry",
     slug: "chicken-curry",
-    author: "",
+    author: "Bobby Flay",
     type: "entree",
     level: "advanced",
+    rating: 5,
     image: "/recipes/chickenCurry.jpg",
     video: "",
     portions: 6,
@@ -145,7 +150,7 @@ const recipes = [
           { ingredient: "coconut milk", amount: 1, amountType: "cup" },
           { ingredient: "curry powder", amount: 2, amountType: "tbsp" },
           { ingredient: "diced tomatoes", amount: 1, amountType: "cup" },
-          { ingredient: "salt", amount: 0.5, amountType: "tsp" },
+          { ingredient: "salt", amount: 1/2, amountType: "tsp" },
         ],
       },
     ],
@@ -158,9 +163,10 @@ const recipes = [
   {
     name: "Garlic Bread",
     slug: "garlic-bread",
-    author: "",
+    author: "David Chang",
     type: "appetizer",
     level: "beginner",
+    rating: 3,
     image: "/recipes/garlicBread.jpg",
     video: "",
     portions: 8,
@@ -184,9 +190,10 @@ const recipes = [
   {
     name: "Fruit Salad",
     slug: "fruit-salad",
-    author: "",
+    author: "Julia Child",
     type: "dessert",
     level: "beginner",
+    rating: 5,
     image: "/recipes/fruitSalad.jpg",
     video: "",
     portions: 8,
@@ -195,7 +202,7 @@ const recipes = [
         listname: "Main Ingredients",
         list: [
           { ingredient: "strawberries, sliced", amount: 1, amountType: "cup" },
-          { ingredient: "blueberries", amount: 0.5, amountType: "cup" },
+          { ingredient: "blueberries", amount: 1/2, amountType: "cup" },
           { ingredient: "banana, sliced", amount: 1, amountType: "" },
           { ingredient: "honey", amount: 1, amountType: "tbsp" },
         ],
@@ -209,9 +216,10 @@ const recipes = [
   {
     name: "Meatloaf",
     slug: "meatloaf",
-    author: "",
+    author: "Anthony Bourdain",
     type: "entree",
     level: "intermediate",
+    rating: 3.5,
     image: "/recipes/meatLoaf.jpg",
     video: "",
     portions: 10,
@@ -221,8 +229,8 @@ const recipes = [
         list: [
           { ingredient: "medium carrot", amount: 1 },
           { ingredient: "rib celery", amount: 1 },
-          { ingredient: "medium onion", amount: 0.5 },
-          { ingredient: "medium red bell pepper", amount: 0.5 },
+          { ingredient: "medium onion", amount: 1/2 },
+          { ingredient: "medium red bell pepper", amount: 1/2 },
           { ingredient: "white mushrooms", amount: 4 },
           { ingredient: "cloves garlic", amount: 3 },
           { ingredient: "ground chuck", amount: 2.5, amountType: "pounds" },
@@ -231,7 +239,7 @@ const recipes = [
           { ingredient: "dried Italian herbs", amount: 1, amountType: "teaspoon" },
           { ingredient: "salt", amount: 2, amountType: "teaspoons" },
           { ingredient: "ground black pepper", amount: 1, amountType: "teaspoon" },
-          { ingredient: "cayenne pepper", amount: 0.5, amountType: "teaspoon" },
+          { ingredient: "cayenne pepper", amount: 1/2, amountType: "teaspoon" },
           { ingredient: "plain bread crumbs", amount: 1, amountType: "cup" }
         ]
       },
@@ -260,8 +268,10 @@ const recipes = [
   {
     name: "Beef Wellington",
     slug: "beef-wellington",
+    author: "Anthony Bourdain",
     type: "entree",
     level: "advanced",
+    rating: 5,
     image: "/recipes/beefWellington.jpg", // Path to image goes here
     video: "", // Path to video goes here
     portions: 6,
