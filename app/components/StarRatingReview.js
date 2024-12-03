@@ -18,6 +18,7 @@ function StarRatingReview({ rating, setRating }) {
                         onClick={() => {
                             setRating(star)
                         }}
+                        // added hover feature where stars change color when hovered on
                         onMouseEnter={() => setHoveredStar(star)}
                         onMouseLeave={() => setHoveredStar(0)}
                     >
