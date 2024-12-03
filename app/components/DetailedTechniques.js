@@ -26,14 +26,10 @@ const DetailedTechniques = ({ technique }) => {
         <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
       </div>
 
-
       <h2 className="text-lg font-semibold text-colour3">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
-
-
-      {/* MAKE SURE TO FIX THIS -------------*/}
+      
       {/* The combined text to make it look like a paragraph ( maybe will find another way to do it ) */}
       {technique.description.map((section, index) =>(
-
         
         <div key ={index} className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
           <h1 className="text-colour1 font-bold" > Summary</h1>
@@ -54,7 +50,6 @@ const DetailedTechniques = ({ technique }) => {
           ></iframe>
         </div>
       )}
-
 
       {/* rendering Image 1 and 2  */}
       <div className="flex flex-col gap-4 mt-3 w-full">
@@ -86,8 +81,12 @@ const DetailedTechniques = ({ technique }) => {
       {/* Suggested Recipes */}
       <h2 className="text-xl font-bold text-colour1 mt-6">Recipes with this Technique:</h2>
       <ul className="list-disc pl-6 text-colour1">
+      
       {technique.recipes.map((recipe, index) => (
+
       <li key={index} className="mt-1">
+        
+        {/*Display the slug if the recipe exists , but display the recipe despite it being not there  */}
         <Link className="text-blue-500 hover:text-blue-700 underline" href={`/recipes/${recipe.slug}`}>{recipe.name}
         </Link>
       </li>

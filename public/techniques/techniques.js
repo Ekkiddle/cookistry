@@ -22,7 +22,8 @@ const techniques = [
       }
     ],
     recipes: [
-      { name: "mac and cheese ", slug: "backed-mac-and-cheese" },
+      { name: "mac and cheese " },
+      
     ]
   },
   {
@@ -35,12 +36,13 @@ const techniques = [
     main_video: "https://www.youtube.com/watch?v=7To3giV62rg", // path to video here
     description: [ // description of technique, broken down into sections
       {
-        text:  "This is a description of the fold in technique ",
+        text:  ["Folding is a a baking technique that involves gently mixing a lighter, airier ingredient into a heavier, denser ingredient. The goal is to incorporate the delicate ingredients without deflating the batter and to preserve the structure and lightness of the mixture",
+        "To fold ingredients into a batter, you can use a spatula or wooden spoon to scoop around the mixture and then flip the spoon over to tuck in the ingredients. You can also rotate the bowl to make sure you get the ingredients from the whole perimeter. It's important to be gentle so you don't knock out air bubbles.",],
         image1: "/techniques/fold-in.jpg",
         image2: "/techniques/Fold-in2.jpeg", // optional
       }
     ],
-    recipes: ["Pumpkin pie", " Strawberry cheese cake "] // list of recipes using this technique
+    recipes: [{ name: "Pumpkin pie" }] // list of recipes using this technique
   },
   {
     name: "Baste",
@@ -52,12 +54,12 @@ const techniques = [
     main_video: "", // path to video here
     description: [ // description of technique, broken down into sections
       {
-        text: "",
+        text: ["Basting is good ", " Wow "],
         image: "", // optional
         video: "", // optional
       }
     ],
-    recipes: [""] // list of recipes using this technique
+    recipes: [{ name: "meatloaf"}] // list of recipes using this technique
   },
   {
     name: "Saute",
@@ -69,12 +71,12 @@ const techniques = [
     main_video: "", // path to video here
     description: [ // description of technique, broken down into sections
       {
-        text: "",
+        text: ["Sauteeing is good ", " Wow "],
         image: "", // optional
         video: "", // optional
       }
     ],
-    recipes: [""] // list of recipes using this technique
+    recipes: [{ name: "mac and cheese" }] // list of recipes using this technique
   }
 ];
 
