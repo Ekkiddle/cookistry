@@ -1,4 +1,15 @@
-function RecipeSummary({ recipeTitle, recipeAuthor, recipeLevel, recipeType, recipeImage, imgDescription, showMedia, onToggleShowMedia }) {
+import StarRatingDisplay from "./StarRatingDisplay";
+
+function RecipeSummary({ 
+    recipeTitle,
+    recipeAuthor, 
+    recipeLevel, 
+    recipeType, 
+    recipeImage, 
+    imgDescription, 
+    showMedia, 
+    onToggleShowMedia, 
+    recipeRating }) {
 
     return (
         <>
@@ -6,7 +17,11 @@ function RecipeSummary({ recipeTitle, recipeAuthor, recipeLevel, recipeType, rec
             <h3 className="font-bold text-4xl">{recipeTitle}</h3>
             <h2>{" Author: "}{recipeAuthor}</h2>
             <h2>{"Level: "}{recipeLevel}</h2>
-
+            {/* User rating component */}
+            <div className="flex flex-row items-center gap-3">
+                {"Average Rating: "}
+                <StarRatingDisplay rating={recipeRating} />
+            </div>
 
             {/* Horizontal flex box */}
             <div className="flex flex-row justify-between items-center">
