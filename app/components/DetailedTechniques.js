@@ -1,8 +1,10 @@
 
 "use client"
 
+// components/DetailedTechniques.js
 import React from "react";
-import { IoIosArrowBack } from "react-icons/io";
+import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
+
 import { useRouter } from "next/navigation";
 
 import Link from 'next/link';
@@ -23,8 +25,10 @@ const DetailedTechniques = ({ technique }) => {
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
       
       <div className="flex flex-col items-start pb-4">
-        
-        <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
+
+        {/* Back to Search Button */}
+          <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
+
             <u className="flex flex-row items-center mb-0">
               <IoIosArrowBack /> {"Back to Search"}
             </u>
