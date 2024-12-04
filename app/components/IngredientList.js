@@ -1,21 +1,6 @@
 import { useState } from "react";
 import pluralize from "pluralize";
 
-function toFraction(decimal) {
-    const tolerance = 1.0E-6; // Tolerance level for approximation
-    let numerator = 1;
-    let denominator = 1;
-    let fraction = decimal;
-
-    while (Math.abs(fraction - Math.round(fraction)) > tolerance) {
-        denominator++;
-        fraction = decimal * denominator;
-        numerator = Math.round(fraction);
-    }
-
-    return `${numerator}/${denominator}`;
-}
-
 function IngredientList({ ingredients = [], portions = 1 }) {
 
     const [multiplier, setMultiplier] = useState(1);
@@ -27,14 +12,12 @@ function IngredientList({ ingredients = [], portions = 1 }) {
     return (
         <div className=" w-full px-6 md:px-12">
             {/* (conditional in desktop view) Second Column: adjust portion */}
-            <div className="pb-4">
+            <div>
                 {"Current portion size: "}{portions * multiplier}
             </div>
-            <div className="inline-flex items-top justify-left gap-3">
-                <div className="pt-0.5">
-                    {"Adjust portions: "}
-                </div>
-                <div className="inline-flex gap-1">
+            <div className="flex items-center justify-start gap-3 my-3">
+                {"Adjust portions: "}
+                <div className="flex gap-1 items-center">
                     {[1, 2, 3].map((value) => (
                         <button
                             key={value}
@@ -43,10 +26,8 @@ function IngredientList({ ingredients = [], portions = 1 }) {
                                         border border-gray-300 
                                         focus:outline-none hover:bg-gray-200 
                                         focus:ring-4 focus:ring-orange-300 font-medium rounded-lg 
-                                        text-xs px-3 py-1 me-1 mb-4
-                                        sm:text-sm sm:px-4 sm:py-1.5
-                                        md:text-base md:px-5 md:py-2.5
-                                        ${value === multiplier ? '!bg-orange-300 text-black shadow-md' : ''}`} >
+                                        text-base px-4 py-2 text-center leading-tight
+                                        ${value === multiplier ? '!bg-orange-300 text-black shadow-md' : ''}`}>
                             x{value}
                         </button>
                     ))}
@@ -84,6 +65,22 @@ function IngredientList({ ingredients = [], portions = 1 }) {
 
         </div>
     );
+}
+
+// Function to convert the recipe amounts to fractions toFraction AI generated
+function toFraction(decimal) {
+    const tolerance = 1.0E-6;
+    let numerator = 1;
+    let denominator = 1;
+    let fraction = decimal;
+
+    while (Math.abs(fraction - Math.round(fraction)) > tolerance) {
+        denominator++;
+        fraction = decimal * denominator;
+        numerator = Math.round(fraction);
+    }
+
+    return `${numerator}/${denominator}`;
 }
 
 export default IngredientList;
