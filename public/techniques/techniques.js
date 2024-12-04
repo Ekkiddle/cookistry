@@ -21,7 +21,10 @@ const techniques = [
         video: "", // optional
       }
     ],
-    recipes: ["Boiled eggs", "Pasta marinara"] // list of recipes using this technique
+    recipes: [
+      { name: "Baked Mac and Cheese"
+      },{name : "Boiled eggs"}
+    ]
   },
   {
     name: "Fold in",
@@ -33,12 +36,13 @@ const techniques = [
     main_video: "https://www.youtube.com/watch?v=7To3giV62rg", // path to video here
     description: [ // description of technique, broken down into sections
       {
-        text:  "This is a description of the fold in technique ",
+        text:  ["Folding is a a baking technique that involves gently mixing a lighter, airier ingredient into a heavier, denser ingredient. The goal is to incorporate the delicate ingredients without deflating the batter and to preserve the structure and lightness of the mixture",
+        "To fold ingredients into a batter, you can use a spatula or wooden spoon to scoop around the mixture and then flip the spoon over to tuck in the ingredients. You can also rotate the bowl to make sure you get the ingredients from the whole perimeter. It's important to be gentle so you don't knock out air bubbles.",],
         image1: "/techniques/fold-in.jpg",
         image2: "/techniques/Fold-in2.jpeg", // optional
       }
     ],
-    recipes: ["Pumpkin pie", " Strawberry cheese cake "] // list of recipes using this technique
+    recipes: [{ name: "Pumpkin Pie" }] // list of recipes using this technique
   },
   {
     name: "Baste",
@@ -50,12 +54,18 @@ const techniques = [
     main_video: "", // path to video here
     description: [ // description of technique, broken down into sections
       {
-        text: "",
+        text: ["Basting is a cooking technique that involves periodically moistening food with liquid while it cooks to add flavor and prevent it from drying out. The liquid can be meat drippings, melted butter, sauces, marinades, or other fats. Basting is commonly used for turkey, chicken, pork, duck, and beef, but can be applied to any type of meat.", 
+          " Here are some tips for basting:", 
+          " - You can use a basting brush, spoon, ladle, or turkey baster to apply the liquid.", 
+          " - Basting can also help cool the surface of the meat and slow down cooking. ",
+          " - To avoid overcooking, you can use an instant-read thermometer to check the internal temperature of the meat. ",
+          " - Basting while searing a steak can help it cook on both sides at the same time so it doesn't overcook beneath the crust. "
+        ],
         image: "", // optional
         video: "", // optional
       }
     ],
-    recipes: [""] // list of recipes using this technique
+    recipes: [{ name: "Meatloaf"}] // list of recipes using this technique
   },
   {
     name: "Saute",
@@ -67,12 +77,16 @@ const techniques = [
     main_video: "", // path to video here
     description: [ // description of technique, broken down into sections
       {
-        text: "",
+        text: ["Sautéing is a cooking technique that involves cooking food in a small amount of fat in a hot pan while frequently tossing the ingredients around", 
+          "The word sauté comes from the French verb sauter, which means to jump. This refers to the food jumping around in the pan while cooking. ", 
+          "To sauté, you'll need a small amount of fat, like butter or oil, in a hot pan with rounded edges. You should make sure the pan is hot before adding the fat. Then, add the food and stir or toss it regularly so that it's evenly exposed to the heat and doesn't burn." 
+
+        ],
         image: "", // optional
         video: "", // optional
       }
     ],
-    recipes: [""] // list of recipes using this technique
+    recipes: [{ name: "Beef Wellington" }] // list of recipes using this technique
   }
 ];
 
