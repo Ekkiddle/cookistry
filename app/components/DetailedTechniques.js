@@ -10,32 +10,30 @@ import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import Image from "next/image";
 import techniques from "@/public/techniques/techniques";
+import recipes from "@/public/recipes/recipes";
 
 
 const DetailedTechniques = ({ technique }) => {
 
   const router = useRouter();
 
-  const combinedText = technique.description.map(section => section.text).join(" ");
+  
 
-  
-  
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
       
       <div className="flex flex-col items-start pb-4">
 
-        {/* Back to Search Button */}
+        {/* Back to Techniques page  */}
           <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
-
             <u className="flex flex-row items-center mb-0">
               <IoIosArrowBack /> {"Back to Search"}
             </u>
           </button>
-        {/* Title of the technique */}
 
-        <h1 className="text-3xl font-bold text-colour1">{technique.title}</h1>
+        {/* Title of the technique */}
+        <h1 className="text-3xl font-bold text-colour1">{technique.name}</h1>
       </div>
 
       <h2 className="text-lg font-semibold text-colour3">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
@@ -91,18 +89,37 @@ const DetailedTechniques = ({ technique }) => {
       </div>
 
       {/* Suggested Recipes */}
+
       <h2 className="text-xl font-bold text-colour1 mt-6">Recipes with this Technique:</h2>
       <ul className="list-disc pl-6 text-colour1">
       
-      {technique.recipes.map((recipe, index) => (
+      {technique.recipes.map((recipe, index) => {
 
-      <li key={index} className="mt-1">
+    // Find the matching recipe in the recipes array
+
+    // Used ChatGpt for help , i wasn't familiar with how "slugs" work , so i made sure to ask chatgpt to help me understand and debug 
+    // it helped me debug and find a way to get the recipe name from recipe.js @public 
+        const matchingRecipe = recipes.find(r => r.name === recipe.name);
+
+    // If a matching recipe is found, use its slug
         
-        {/*Display the slug if the recipe exists , but display the recipe despite it being not there  */}
-        <Link className="text-blue-500 hover:text-blue-700 underline" href={`/recipes/${recipe.slug}`}>{recipe.name}
-        </Link>
-      </li>
-      ))}
+
+      return (
+        <li key={index} className="mt-1">
+          {matchingRecipe ? (
+              <Link
+              className={`text-blue-500 hover:text-blue-700 underline ${!matchingRecipe ? "cursor-not-allowed text-gray-400" : ""}`}
+              href={`/recipes/${matchingRecipe.slug}`}
+            >
+              {recipe.name}
+            </Link>
+
+          ) : (
+            <span className="text-gray-500">{recipe.name}</span>
+          )}
+        </li>
+      );
+    })}
       </ul>
     </div>
     </div>

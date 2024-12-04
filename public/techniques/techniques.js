@@ -22,8 +22,8 @@ const techniques = [
       }
     ],
     recipes: [
-      { name: "mac and cheese " },
-      
+      { name: "Baked Mac and Cheese"
+      },{name : "Boiled eggs"}
     ]
   },
   {
