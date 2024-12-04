@@ -9,7 +9,7 @@ function FeedbackForm() {
     const [isLocked, setIsLocked] = useState(false);
     const [isTextBoxVisible, setIsTextBoxVisible] = useState(true);
     const [isRatingConfrimatiomVisible, setRatingConfrimatiomVisible] = useState(true);
-
+    const [ratingText, setRatingText] = useState("Rate this recipe: ")
 
     // sets the rating scale to locked if clicked
     const handleRating = (newRating) => {
@@ -17,6 +17,7 @@ function FeedbackForm() {
             setRating(newRating);
             setIsLocked(true);
             setRatingConfrimatiomVisible(true);
+            setRatingText("Thank you for your rating!");
         }
     };
 
@@ -25,6 +26,7 @@ function FeedbackForm() {
         setRating(0);
         setIsLocked(false);
         setRatingConfrimatiomVisible(false);
+        setRatingText("Rate this recipe: ");
     };
 
     // sets the textfield to invisible when submit is clicked 
@@ -36,14 +38,11 @@ function FeedbackForm() {
         <div className="pb-8 pt-2 mx-8 space-y-4">
 
             {/* Recipe rating from user */}
-            <div className="flex flex-row gap-3 items-center">
-                {"Rate this recipe: "}<StarRatingReview rating={rating} setRating={handleRating} setLocked={isLocked} />
-            </div>
+            <div className="flex flex-row gap-2 items-center">
+                {ratingText}<StarRatingReview rating={rating} setRating={handleRating} setLocked={isLocked} />
 
-            {/* Auto appears when rating set */}
-            {isRatingConfrimatiomVisible && (
-                <div className="#14213d font-semibold">
-                    {"Thank you for your rating!"}
+                {/* Auto appears when rating set */}
+                {isRatingConfrimatiomVisible && (
                     <a
                         href="#"
                         className="text-[#555555] text-xs ml-4 italic hover:text-[#fca311] cursor-pointer"
@@ -53,8 +52,8 @@ function FeedbackForm() {
                         }}>
                         {"undo"}
                     </a>
-                </div>
-            )}
+                )}
+            </div>
 
             {/* Textfield section */}
             {isTextBoxVisible && (
