@@ -1,7 +1,4 @@
 
-
-
-
 "use client"
 
 import React from "react";
@@ -27,7 +24,7 @@ const DetailedTechniques = ({ technique }) => {
       
       <div className="flex flex-col items-start pb-4">
         
-      <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
+        <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
             <u className="flex flex-row items-center mb-0">
               <IoIosArrowBack /> {"Back to Search"}
             </u>
