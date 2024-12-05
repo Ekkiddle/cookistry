@@ -8,8 +8,9 @@ export const FilterContext = createContext();
 // Create the provider component
 export const FilterProvider = ({ children }) => {
     const [filters, setFilters] = useState({
-        levels: ["beginner", "intermediate", "advanced"], // Holds selected levels (e.g., beginner, intermediate)
-        types: ["appetizer", "entree", "dessert"],  // Holds selected types (e.g., appetizer, entree)
+        levels: [], // Holds selected levels (e.g., beginner, intermediate)
+        types: [],  // Holds selected types (e.g., appetizer, entree)
+        tags: [], // holds tags for filters
     });
 
     return (

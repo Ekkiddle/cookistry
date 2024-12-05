@@ -16,9 +16,10 @@ const RecipeList = ({ sortBy }) => {
   // Apply the filters to the recipes
   const filteredRecipes = recipes.filter(
     (recipe) =>
-        (filters.levels.length === 0 || filters.levels.includes(recipe.level)) &&
-        (filters.types.length === 0 || filters.types.includes(recipe.type))
-);
+        (filters.levels.length === 0 || filters.levels.includes(recipe.level)) 
+        && (filters.types.length === 0 || filters.types.includes(recipe.type)) 
+        && (filters.tags.length === 0 || filters.tags.every(tag => recipe.tags.includes(tag)))
+    );
 
   // Sort the filtered recipes
   const sortedRecipes = [...filteredRecipes].sort((a, b) => {

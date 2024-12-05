@@ -2,6 +2,7 @@
 
 import { Button } from "@mui/material";
 import Link from 'next/link';
+import Icon from "./icon";
 
 // takes a single recipe as a prop to the component. This component is also responsible for navigating to
 // the recipe page for that specific recipe.
@@ -19,10 +20,17 @@ const RecipeCard = ({recipe}) => {
                 </div>
                 <div className="w-full flex flex-col">
                     <strong className="text-xl">{recipe.name}</strong>
-                    <div className="flex flex-row gap-5 text-sm text-gray-500 items-center">
+                    <div className="flex flex-row gap-3 text-sm text-gray-500 items-center">
                         <h1>{recipe.type}</h1>
                         <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
                         <h1>{recipe.level}</h1>
+                        {recipe.tags.map((type, index) => (
+                            <div key={index} className="flex items-center space-x-2">
+                                <div className="w-1 h-1 bg-gray-500 rounded-full"></div>
+                                <Icon type={type} />
+                            </div>
+                        ))}
+                        {/* Make the icons for each of vegan, gluten-free, lactose-free and spice in tags */}
                     </div>
                     <h2 className="text-md font-bold">{recipe.ingredients[0].listname}</h2>
                     <ul className="list-disc pl-5 line-clamp-4 text-sm">
