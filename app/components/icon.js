@@ -1,10 +1,10 @@
 import React from "react";
-import { LuVegan, LuMilkOff } from "react-icons/lu"; // For Vegan and Lactose-Free icons
-import { PiGrainsSlash } from "react-icons/pi"; // For Gluten-Free icon
-import { IoMdFlame } from "react-icons/io"; // For Spice icon
+import { LuVegan, LuMilkOff } from "react-icons/lu"; // Vegan and Lactose-Free icons
+import { PiGrainsSlash } from "react-icons/pi"; // Gluten-Free icon
+import { IoMdFlame } from "react-icons/io"; // Spicy icon
 
 const Icon = ({ type }) => {
-  // Define the icons and their meanings
+  // Define available icons and their labels
   const icons = {
     vegan: {
       icon: <LuVegan className="text-sm text-gray-500" />,
@@ -24,21 +24,21 @@ const Icon = ({ type }) => {
     },
   };
 
-  // Get the current icon details
-  const icon = icons[type];
+  // Ensure the provided type is valid
+  const iconData = icons[type];
 
-  if (!icon) {
-    return null; // Return null if the type is invalid
+  if (!iconData) {
+    return null; // Return null if no matching icon is found
   }
 
   return (
     <div className="relative group inline-block">
-      {/* Icon */}
-      <div className="cursor-pointer">{icon.icon}</div>
+      {/* Render Icon */}
+      <div className="cursor-pointer">{iconData.icon}</div>
 
       {/* Tooltip */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 hidden w-max rounded bg-gray-800 px-3 py-1 text-xs text-white opacity-0 group-hover:block group-hover:opacity-100 transition-opacity duration-300">
-        {icon.label}
+      <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 hidden w-max rounded bg-gray-800 px-3 py-1 text-xs text-white opacity-0 group-hover:block group-hover:opacity-100 transition-opacity duration-300">
+        {iconData.label}
       </div>
     </div>
   );
