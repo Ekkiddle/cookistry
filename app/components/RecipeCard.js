@@ -2,7 +2,7 @@
 
 import { Button } from "@mui/material";
 import Link from 'next/link';
-import Icon from "./icon";
+import Icon from "./CustomIcon";
 
 // takes a single recipe as a prop to the component. This component is also responsible for navigating to
 // the recipe page for that specific recipe.
