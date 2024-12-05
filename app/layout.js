@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <div className="flex flex-col min-h-screen">
               <NavBar />
               {/* Spacer div for navigation */}
-              <div className="w-full h-24 md:h-12"></div>
+              <div className="w-full h-24 md:h-14"></div>
               {/* Main content */}
               <JumpToTop />
               <div className="flex-1">{children}</div>
