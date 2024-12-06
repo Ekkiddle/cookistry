@@ -29,6 +29,7 @@ export default function Page() {
           <FilterButton ignoreRecipes={true} />
         </div>
       </div>
+      <div className="w-full h-1 rounded-lg bg-colour4"></div>
       <div className="z-0">
         <TechniquesList techniques={techniques} sortBy={sortMode} />
       </div>
