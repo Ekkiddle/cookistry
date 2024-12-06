@@ -6,19 +6,27 @@ import StarRatingReview from "./StarRatingReview";
 function FeedbackForm() {
 
     const [rating, setRating] = useState(0);
+    const [isLocked, setIsLocked] = useState(false);
     const [isTextBoxVisible, setIsTextBoxVisible] = useState(true);
-    const [isRatingVisible, setIsRatingVisible] = useState(true);
+    const [isRatingConfrimatiomVisible, setRatingConfrimatiomVisible] = useState(true);
+    const [ratingText, setRatingText] = useState("Rate this recipe: ")
 
-    // sets the rating scale to invisible if clicked
+    // sets the rating scale to locked if clicked
     const handleRating = (newRating) => {
-        setRating(newRating);
-        setIsRatingVisible(false);
+        if (!isLocked) {
+            setRating(newRating);
+            setIsLocked(true);
+            setRatingConfrimatiomVisible(true);
+            setRatingText("Thank you for your rating!");
+        }
     };
 
     // sets the rating stars to visible is undo is clicked
     const handleUndoRating = () => {
         setRating(0);
-        setIsRatingVisible(true);
+        setIsLocked(false);
+        setRatingConfrimatiomVisible(false);
+        setRatingText("Rate this recipe: ");
     };
 
     // sets the textfield to invisible when submit is clicked 
@@ -30,16 +38,11 @@ function FeedbackForm() {
         <div className="pb-8 pt-2 mx-8 space-y-4">
 
             {/* Recipe rating from user */}
-            {isRatingVisible && (
-                <div className="flex flex-row gap-3 items-center">
-                    {"Rate this recipe: "}<StarRatingReview rating={rating} setRating={handleRating} />
-                </div>
-            )}
+            <div className="flex flex-row gap-2 items-center">
+                {ratingText}<StarRatingReview rating={rating} setRating={handleRating} setLocked={isLocked} />
 
-            {/* Auto appears when rating disappears */}
-            {!isRatingVisible && (
-                <div className="#14213d font-semibold">
-                    {"Thank you for your rating!"}
+                {/* Auto appears when rating set */}
+                {isRatingConfrimatiomVisible && (
                     <a
                         href="#"
                         className="text-[#555555] text-xs ml-4 italic hover:text-[#fca311] cursor-pointer"
@@ -49,8 +52,8 @@ function FeedbackForm() {
                         }}>
                         {"undo"}
                     </a>
-                </div>
-            )}
+                )}
+            </div>
 
             {/* Textfield section */}
             {isTextBoxVisible && (
