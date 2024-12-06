@@ -74,7 +74,7 @@ const techniques = [
     imageAlt: "Vegetable dish on frying pan. Photo by Ela Haney from Pexels.com.",
     level: "beginner",
     summary: "Quickly frying food in a small amount of oil or fat over medium to high heat.",
-    main_video: "", // path to video here
+    main_video: "https://www.youtube.com/watch?v=CTyV3JExDT8", // path to video here
     description: [ // description of technique, broken down into sections
       {
         text: ["Sautéing is a cooking technique that involves cooking food in a small amount of fat in a hot pan while frequently tossing the ingredients around", 
@@ -82,7 +82,8 @@ const techniques = [
           "To sauté, you'll need a small amount of fat, like butter or oil, in a hot pan with rounded edges. You should make sure the pan is hot before adding the fat. Then, add the food and stir or toss it regularly so that it's evenly exposed to the heat and doesn't burn." 
 
         ],
-        image: "", // optional
+        image1: "/techniques/sauteing2.jpeg", // optional
+        image2: "/techniques/sauteing3.jpeg",
         video: "", // optional
       }
     ],
