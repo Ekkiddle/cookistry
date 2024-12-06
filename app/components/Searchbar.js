@@ -7,6 +7,7 @@ import FilterMenu from "./Filtermenu";
 import recipes from "@/public/recipes/recipes";
 import techniques from "@/public/techniques/techniques";
 import { useRouter } from "next/navigation";
+import FilterButton from "./FilterButton";
 
 const Searchbar = () => {
     const router = useRouter();
@@ -101,7 +102,7 @@ const Searchbar = () => {
                     onBlur={handleBlur}
                     className="bg-[transparent] outline-none border-none w-full text-xs md:text-sm"
                 />
-                <div className="relative h-full">
+                {/* <div className="relative h-full">
                     <button
                         className="bg-slate-500 h-full rounded-r-[15px] w-10 flex items-center justify-center hover:bg-slate-700 text-white hover:text-slate-500"
                         onClick={handleOpenFilter}
@@ -109,7 +110,8 @@ const Searchbar = () => {
                         <CiFilter />
                     </button>
                     {openFilter && <FilterMenu handleClose={handleCloseFilter} />}
-                </div>
+                </div> */}
+                <FilterButton inSearchbar={true} />
             </div>
 
             {/* Suggestions Dropdown */}

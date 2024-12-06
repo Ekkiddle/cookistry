@@ -1,11 +1,14 @@
 "use client";
 
+import CategoryInfoButton from "@/app/components/CategoryInfoButton"
 import React, { useState } from "react";
 import { useFilter } from "@/app/components/Filter";
+import FilterButton from "@/app/components/FilterButton";
 import RecipeCard from "@/app/components/RecipeCard";
 import TechniquesCard from "@/app/components/techniquesCard";
 import recipes from "@/public/recipes/recipes";
 import techniques from "@/public/techniques/techniques";
+import NoResults from "@/app/components/NoResults";
 
 // Combine recipes and techniques
 const searchData = [
@@ -18,17 +21,25 @@ const SearchResults = ({ params: paramsPromise }) => {
     const { query } = params;
 
     const { filters } = useFilter(); // Access filters
-    const [sortBy, setSortBy] = useState("type"); // Default sorting by title
+    const [sortBy, setSortBy] = useState("type");
 
     const sortOrder = {
         level: ["beginner", "intermediate", "advanced"],
         type: ["appetizer", "entree", "dessert", "technique"],
     };
 
-    // Apply filters
+    // Apply query and filters
     const filteredData = searchData.filter(
-        (item) =>
-            query ? (item.name || item.title).toLowerCase().includes(query.toLowerCase()) : true
+        (item) => {
+          // decode query (recover characters like spaces)
+          let query_dec = decodeURI(query);
+          return (
+            (filters.levels.length === 0 || filters.levels.includes(item.level))
+            && (filters.types.length === 0 || filters.types.includes(item.type))
+            && (filters.tags.length === 0 || filters.tags.every(tag => item.tags?.includes(tag)))
+            && (query_dec ? (item.name || item.title).toLowerCase().includes(query_dec.toLowerCase()) : true)
+          )
+        }
     );
 
     // Sort the filtered data
@@ -62,41 +73,58 @@ const SearchResults = ({ params: paramsPromise }) => {
 
     return (
         <div className="">
-            {/* Sort By Options */}
-            <div className="mb-4 p-4 flex justify-between items-center">
-                <h1 className="text-xl font-bold">Showing results for: &quot;{query}&quot;</h1>
-                <select
-                    className="border rounded-md px-3 py-1"
-                    value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
-                >
-                    <option value="title">Title</option>
-                    <option value="level">Level</option>
-                    <option value="type">Type</option>
-                </select>
-            </div>
-
             {/* Render Grouped Data */}
-            <div>
-                {Object.keys(groupedData).sort().map((groupKey) => (
-                    <div key={groupKey} className="w-full">
-                        {/* Group Header */}
-                        <h2 className="sticky top-24 md:top-12 z-10 p-2 pl-6 text-2xl font-bold bg-colour2 text-colour4">
-                            {groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}
-                        </h2>
-                        {/* Group Content */}
-                        <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
-                            {groupedData[groupKey].map((item, index) =>
-                                item.type === "technique" ? (
-                                    <TechniquesCard key={index} technique={item} />
-                                ) : (
-                                    <RecipeCard key={index} recipe={item} />
-                                )
-                            )}
-                        </div>
+            {Object.keys(groupedData).length > 0? (
+              // grouped data exists (resulst were found), show the list
+              <div>
+                  {/* Sort By Options */}
+                  <div className="flex flex-wrap justify-between p-4">
+                    <h1 className="text-xl">
+                      <b>Showing results for </b><i>&quot;{decodeURI(query)}&quot;</i>
+                    </h1>
+                    <div className="flex items-center ml-auto">
+                      <label htmlFor="sort" className="pr-1.5 my-auto text-colour1">
+                        Sort by
+                      </label>
+                      <select id="sort"
+                        className="p-1 text-colour2 bg-colour4 rounded-md"
+                        value={sortBy}
+                        onChange={(e) => setSortBy(e.target.value)}
+                      >
+                        <option value="level">Level</option>
+                        <option value="title">Title</option>
+                        <option value="type">Type</option>
+                      </select>
+                      <FilterButton />
                     </div>
-                ))}
-            </div>
+                  </div>
+                  {Object.keys(groupedData).map((groupKey) => (
+                      <div key={groupKey} className="w-full">
+                          {/* Group Header */}
+                          <div className="sticky top-24 md:top-12 z-10 w-full flex flex-row justify-between p-2 pl-6 pr-4 bg-colour2">
+                            <h2 className="text-xl font-bold text-colour4">
+                              {groupKey.charAt(0).toUpperCase() + groupKey.slice(1)}
+                            </h2>
+                            {/* only include the info button if sortBy has specified categories */}
+                            {sortOrder[sortBy] && <CategoryInfoButton cat_name={sortBy} cat_option={groupKey} />}
+                          </div>
+                          {/* Group Content */}
+                          <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
+                              {groupedData[groupKey].map((item, index) =>
+                                  item.type === "technique" ? (
+                                      <TechniquesCard key={index} technique={item} />
+                                  ) : (
+                                      <RecipeCard key={index} recipe={item} />
+                                  )
+                              )}
+                          </div>
+                      </div>
+                  ))}
+              </div>
+            ) : (
+              // grouped data empty (no results found)
+              <NoResults query_text={decodeURI(query)} includeFilter={true} />
+            )}
         </div>
     );
 };
