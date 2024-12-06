@@ -33,7 +33,7 @@ export default function NoResults({query_text, ignoreRecipes, includeFilter}) {
             <>No results found!</>
           </h1>
         )}
-        {includeFilter && <div className="flex items-center ml-auto">
+        {(includeFilter && usingFilters) && <div className="flex items-center ml-auto">
           <FilterButton />
         </div>}
       </div>
