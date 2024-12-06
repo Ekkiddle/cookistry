@@ -61,7 +61,8 @@ const techniques = [
           " - To avoid overcooking, you can use an instant-read thermometer to check the internal temperature of the meat. ",
           " - Basting while searing a steak can help it cook on both sides at the same time so it doesn't overcook beneath the crust. "
         ],
-        image: "", // optional
+        image1: "/techniques/baste1.jpeg", 
+        image2: "/techniques/baste2.jpeg",   // optional
         video: "", // optional
       }
     ],
