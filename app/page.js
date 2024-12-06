@@ -29,6 +29,7 @@ export default function Home() {
             className="p-1 text-colour2 bg-colour4 rounded-md"
           >
             <option value="level">Level</option>
+            <option value="name">Title</option>
             <option value="type">Type</option>
           </select>
           <FilterButton />
