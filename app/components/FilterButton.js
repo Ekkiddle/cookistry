@@ -18,7 +18,7 @@ export default function FilterButton( {ignoreRecipes, inSearchbar}) {
     && (ignoreRecipes || (filters.tags.length === 0))) ?
       (filter_btn.current?.setAttribute("data-filtering", "false"))
       : (filter_btn.current?.setAttribute("data-filtering", "true"));
-  }, [filters])
+  }, [filters, ignoreRecipes])
 
   return (
     <>

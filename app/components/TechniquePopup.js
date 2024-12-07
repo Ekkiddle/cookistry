@@ -3,7 +3,7 @@ import DetailedTechniques from "./DetailedTechniques";
 import techniques from "@/public/techniques/techniques";
 import Link from "next/link";
 
-export default function ({name, children}) {
+export default function TechniquePopup({name, children}) {
   const [showPopup, setShowPopup] = useState(false);
   // find technique using name, if given, or children text, if not
   const technique = [...techniques].find((item) => {

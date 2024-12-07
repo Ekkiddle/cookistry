@@ -18,7 +18,7 @@ export default function NoResults({query_text, ignoreRecipes, includeFilter}) {
     setUsingFilters(!(filters.levels.length === 0)
     || !(ignoreRecipes || filters.types.length === 0)
     || !(ignoreRecipes || filters.tags.length === 0));
-  }, [filters])
+  }, [filters, ignoreRecipes])
 
   return(
     <div className="flex flex-col gap-2 p-4">

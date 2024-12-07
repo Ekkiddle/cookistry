@@ -30,7 +30,7 @@ function StepsList({ instructions = [], showMedia }) {
       if (existCheckedSteps !== stepCheckedCurrently) {
         setExistCheckedSteps(stepCheckedCurrently);
       }
-    }, [checkedSteps]);
+    }, [checkedSteps, existCheckedSteps, setExistCheckedSteps]);
 
     // Map over instructions and render list items with checkboxes, instructions, and conditional images
     const listItems = instructions.map((step) => (

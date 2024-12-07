@@ -6,15 +6,15 @@ import { IoIosArrowBack } from "react-icons/io";
 import { CheckmarkContext } from "./CheckmarkContext";
 import { createPortal } from "react-dom";
 
-export default function BackButton({confirmCheckboxes}) {
-  const {existCheckedSteps} = confirmCheckboxes ? useContext(CheckmarkContext) : false;
+export default function BackButton() {
+  const {existCheckedSteps} = useContext(CheckmarkContext);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const popup_ref = useRef(null);
 
   const router = useRouter();
 
   function goBack() {
-    if (confirmCheckboxes && existCheckedSteps) {
+    if (existCheckedSteps) {
       // trigger confirmation
       setShowConfirmation(true);
     } else {

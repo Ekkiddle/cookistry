@@ -18,8 +18,6 @@ const DetailedTechniques = ({ technique, isPopup  }) => {
 
   const router = useRouter();
 
-  
-
   return (
     <div className={`flex flex-col w-full ${!isPopup && "min-h-screen"} bg-colour5`}>
       <div className="max-w-5xl mx-auto bg-white mx-6 shadow-lg z-10 p-4">
@@ -27,7 +25,12 @@ const DetailedTechniques = ({ technique, isPopup  }) => {
       <div className="flex flex-col items-start pb-4">
 
         {/* Back to Techniques page (show only if not popup) */}
-        {!isPopup && <BackButton inTechnique={true} />}
+        {!isPopup &&
+        <button onClick={() => {router.back()}} className="text-sm text-color4 hover:text-colour3">
+            <u className="flex flex-row items-center mb-0">
+                <IoIosArrowBack /> {"Back"}
+            </u>
+        </button>}
 
         {/* Title of the technique */}
         <h1 className="text-3xl font-bold text-colour1">{technique.name}</h1>
