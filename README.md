@@ -90,9 +90,6 @@ The app is deployed on [Vercel](https://cookistry-theta.vercel.app/) for product
 
 Make sure to look at our github for any other information you would like to know.
 
-
-3. Submit a pull request.  
-
 Together, we can make **Cookistry** even better! 🧑‍🍳
 
 ---
