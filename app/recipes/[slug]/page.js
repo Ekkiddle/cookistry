@@ -76,7 +76,7 @@ function Page({ params: paramsPromise }) {
 
     return (
       <CheckmarkContextProvider>
-        <div className="w-full flex justify-center px-2 space-y-4 lg:px-8">
+        <div className="w-full flex justify-center px-6 space-y-4 lg:px-8">
 
             {/* Ingredient drawer component */}
             <div className="z-40 px-0">
@@ -84,7 +84,7 @@ function Page({ params: paramsPromise }) {
             </div>
 
             {/* Creates a background that has all the parts of recipe page on it */}
-            <div className="max-w-5xl mx-auto bg-white mt-4 mx-6 shadow-lg z-10">
+            <div className="mx-auto sm:w-4/5 bg-white mt-4 mx-8 shadow-lg z-10">
 
                 {/* Back to Search Button */}
                 {/* <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
