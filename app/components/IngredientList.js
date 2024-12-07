@@ -15,7 +15,7 @@ function IngredientList({ ingredients = [], portions = 1 }) {
             <div>
                 {"Current portion size: "}{portions * multiplier}
             </div>
-            <div className="flex items-center justify-start gap-3 my-3">
+            <div className="flex flex-wrap items-center justify-start gap-3 my-3">
                 {"Adjust portions: "}
                 <div className="flex gap-1 items-center">
                     {[1, 2, 3].map((value) => (
