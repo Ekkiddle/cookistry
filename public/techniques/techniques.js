@@ -51,7 +51,7 @@ const techniques = [
     imageAlt: "Hand-brushing roasted chicken. Photo by RDNE Stock project from Pexels.com.",
     level: "advanced",
     summary: "A meat cooking technique in which the meat is cooked with its own juices or a preparation such as a sauce or marinade.",
-    main_video: "", // path to video here
+    main_video: "https://www.youtube.com/watch?v=Q_p-MIYuccI", // path to video here
     description: [ // description of technique, broken down into sections
       {
         text: ["Basting is a cooking technique that involves periodically moistening food with liquid while it cooks to add flavor and prevent it from drying out. The liquid can be meat drippings, melted butter, sauces, marinades, or other fats. Basting is commonly used for turkey, chicken, pork, duck, and beef, but can be applied to any type of meat.", 
@@ -61,7 +61,8 @@ const techniques = [
           " - To avoid overcooking, you can use an instant-read thermometer to check the internal temperature of the meat. ",
           " - Basting while searing a steak can help it cook on both sides at the same time so it doesn't overcook beneath the crust. "
         ],
-        image: "", // optional
+        image1: "/techniques/baste1.jpeg", 
+        image2: "/techniques/baste2.jpeg",   // optional
         video: "", // optional
       }
     ],
@@ -74,7 +75,7 @@ const techniques = [
     imageAlt: "Vegetable dish on frying pan. Photo by Ela Haney from Pexels.com.",
     level: "beginner",
     summary: "Quickly frying food in a small amount of oil or fat over medium to high heat.",
-    main_video: "", // path to video here
+    main_video: "https://www.youtube.com/watch?v=CTyV3JExDT8", // path to video here
     description: [ // description of technique, broken down into sections
       {
         text: ["Sautéing is a cooking technique that involves cooking food in a small amount of fat in a hot pan while frequently tossing the ingredients around", 
@@ -82,7 +83,8 @@ const techniques = [
           "To sauté, you'll need a small amount of fat, like butter or oil, in a hot pan with rounded edges. You should make sure the pan is hot before adding the fat. Then, add the food and stir or toss it regularly so that it's evenly exposed to the heat and doesn't burn." 
 
         ],
-        image: "", // optional
+        image1: "/techniques/sauteing3.jpeg", // optional
+        image2: "/techniques/sauteing2.jpeg",
         video: "", // optional
       }
     ],
