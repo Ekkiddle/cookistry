@@ -166,13 +166,23 @@ const FilterMenu = ({ ignoreRecipes, handleClose }) => {
         handleClose(); // Close the filter menu after confirming
     };
 
+    const clearFilters = () => {
+      setFilters({
+          levels: [],
+          types: [],
+          tags: [],
+      });
+    }
+
     return (
         <div
             ref={componentRef}
-            className="absolute flex flex-col p-2 px-4 bg-colour4 top-5 right-0 shadow-xl rounded-sm text-colour2 gap-2 overflow-y-auto z-20"
+            className="absolute max-h-[70vh] min-w-60 flex flex-col py-2 bg-colour4 top-5 right-0 shadow-xl shadow-colour2/25 rounded-sm text-colour2 gap-2 overflow-y-auto z-20"
         >
-            <Typography style={{ textDecoration: "underline" }}>Filter Settings</Typography>
-            <div className="flex flex-col md:flex-row gap-2 md:gap-5">
+            <Typography className="underline px-4">Filter Settings</Typography>
+            <div className="
+              flex flex-col md:flex-row gap-2 md:gap-5 overflow-auto px-4 py-2 shadow-inner"
+            >
                 {/* Level Filter */}
                 <FormControl component="fieldset">
                     <FormLabel component="legend">Level</FormLabel>
@@ -342,13 +352,39 @@ const FilterMenu = ({ ignoreRecipes, handleClose }) => {
                 </FormControl>}
             </div>
             {/* Confirm and Cancel buttons */}
-            <div className="flex flex-row gap-1 w-full h-5 mt-2">
-                <Button variant="contained" color="success" onClick={filter} className="w-full">
-                    Confirm
-                </Button>
-                <Button variant="contained" color="primary" onClick={handleClose} className="w-full">
-                    Cancel
-                </Button>
+            <div className="flex flex-col items-stretch px-4 gap-2">
+                {/* Reset Filters button */}
+                <button onClick={clearFilters}
+                  className="
+                    w-full
+                    text-sm text-colour2
+                    border-2 border-current
+                    bg-colour5/50 rounded-md
+                    hover:text-colour2 hover:bg-colour5
+                    hover:shadow-md hover:shadow-colour2/75"
+                >
+                    Clear All Filters
+                </button>
+                <div className="flex flex-row gap-2 w-full">
+                    <button onClick={filter} 
+                      className="
+                        w-full px-2 py-1
+                        text-colour4
+                        bg-colour2 rounded-md
+                        hover:text-colour5 hover:shadow-md hover:shadow-colour2/75"
+                    >
+                        Confirm
+                    </button>
+                    <button onClick={handleClose}
+                      className="
+                        w-full px-2 py-1
+                        text-colour5
+                        bg-colour3 rounded-md
+                        hover:shadow-md hover:shadow-colour2/75"
+                    >
+                        Cancel
+                    </button>
+                </div>
             </div>
         </div>
     );
