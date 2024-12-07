@@ -39,7 +39,7 @@ function FeedbackForm() {
 
             {/* Recipe rating from user */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 items-center sm:justify-start">
-                {ratingText}<StarRatingReview rating={rating} setRating={handleRating} setLocked={isLocked} />
+                {ratingText}<StarRatingReview rating={rating} setRating={handleRating} isLocked={isLocked}/>
 
                 {/* Auto appears when rating set */}
                 {isRatingConfrimatiomVisible && (
