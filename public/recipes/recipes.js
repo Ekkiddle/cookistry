@@ -1,4 +1,6 @@
 // recipes.js
+import TechniquePopup from "@/app/components/TechniquePopup";
+
 const recipes = [
   {
     name: "Tacos",
@@ -88,7 +90,7 @@ const recipes = [
     ],
     instructions: [
       { number: 1, instruction: "Preheat oven to 350°F (175°C).", image: "/recipes/oven.jpg" },
-      { number: 2, instruction: "Boil water at 100 degrees.", image: "/techniques/boil-water.jpg"},
+      { number: 2, instruction: <div><TechniquePopup>Boil water</TechniquePopup> at 100 degrees.</div>, image: "/techniques/boil-water.jpg"},
       { number: 3, instruction: "Cook macaroni according to package directions; drain and set aside.", image: "/recipes/macaroni-in-pot.jpg" },
       { number: 4, instruction: "In a saucepan, melt butter over medium heat.", image: "/recipes/melt-butter.jpg" },
       { number: 5, instruction: "Add milk and 2 cups of cheese, stirring until melted and smooth.", image: "/recipes/add-milk.jpg" },
@@ -175,7 +177,7 @@ const recipes = [
     instructions: [
         {
             number: 1,
-            instruction: "Heat olive oil in a skillet over medium heat. Sauté onion until lightly browned.",
+            instruction: <div>Heat olive oil in a skillet over medium heat. <TechniquePopup name="saute">Sauté</TechniquePopup> onion until lightly browned.</div>,
             image: "/recipes/curry-1.webp",
         },
         {
