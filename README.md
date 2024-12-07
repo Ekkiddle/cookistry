@@ -1,17 +1,51 @@
-# COOKISTRY
-An Interface for Cooking Instruction
+# COOKISTRY  
+### 🍽️ An Interface for Cooking Instructions 🍴  
 
-## AUTHORS:
-- Emily Kiddle
-- Vitaliy
-- Marwane
-- Minori Olguin 
+Welcome to **Cookistry**, a Next.js-powered web application designed to streamline recipe exploration, cooking tutorials, and food discovery. Whether you're a professional chef or a weekend home cook, **Cookistry** makes finding and viewing recipes intuitive, efficient, and visually engaging.
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+---
 
-## Getting Started
+## 📚 Authors  
+- **Emily Kiddle** 
+- **Minori Olguin**   
+- **Vitaliy Vysochin**  
+- **Marwane Zaoudi**  
 
-First, run the development server:
+---
+
+## 🚀 Getting Started
+
+To set up and run **Cookistry** on your local machine, follow these steps:
+
+### 1. Clone the Repository
+First, clone the repository to your local system:
+
+```bash
+git clone https://github.com/yourusername/cookistry.git
+```
+
+Replace `yourusername` with the appropriate GitHub username or repository path.
+
+---
+
+### 2. Install Dependencies
+After cloning, navigate into the project directory and install the necessary dependencies:
+
+```bash
+cd cookistry
+npm install
+# or
+yarn install
+# or
+pnpm install
+# or
+bun install
+```
+
+---
+
+### 3. Run the Development Server
+To view the application locally, start the development server:
 
 ```bash
 npm run dev
@@ -23,23 +57,44 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The server will run locally at:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+[http://localhost:3000](http://localhost:3000)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 💡 Features
+Cookistry is designed with the user in mind, focusing on intuitive navigation, user-friendly design, and seamless recipe discovery. Some of the standout features include:
 
-To learn more about Next.js, take a look at the following resources:
+- 🍳 **Recipe Search & Filtering**: Quickly sort through hundreds of recipes using intuitive filters.
+- 🗂️ **Categorization**: Explore recipes by type, difficulty level, and more.
+- 📜 **Step-by-Step Instructions**: Access detailed ingredient lists and step-by-step instructions to simplify cooking.
+- 🎨 **Design Principles Considered**: We made key design choices to ensure user accessibility and navigation through each step of the cooking process.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🖌️ Technologies & Tools  
+Cookistry leverages **Next.js**, modern frontend libraries, and design principles to ensure optimal performance and user experience. Key tech stacks include:  
+- **Next.js** for server-side rendering and fast, responsive routing  
+- **React** for component-based architecture  
+- **CSS Modules & next/font** for design optimization  
+- **Vercel Deployment** for efficient, scalable hosting  
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Deployment  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The app is deployed on [Vercel](https://cookistry-theta.vercel.app/) for production-ready performance.
+
+## Github
+
+Make sure to look at our github for any other information you would like to know.
+
+
+3. Submit a pull request.  
+
+Together, we can make **Cookistry** even better! 🧑‍🍳
+
+---
+
+🎉 **Thank you for exploring Cookistry! Happy cooking!** 🥘
