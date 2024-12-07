@@ -126,7 +126,7 @@ function Page({ params: paramsPromise }) {
 
                 {/* Feedback Form Section */}
                 <div>
-                    <div className="sticky top-24 z-10 md:top-12 bg-colour2 shadow-xl">
+                    <div className="sticky top-24 z-[4] md:top-12 bg-colour2 shadow-xl">
                         <h2 className="m-4 text-colour5 font-bold text-2xl">{"Feedback"}</h2>
                     </div>
                     <FeedbackForm />
