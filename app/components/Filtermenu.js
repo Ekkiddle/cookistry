@@ -12,7 +12,7 @@ import {
     Typography,
 } from "@mui/material";
 
-const FilterMenu = ({ handleClose }) => {
+const FilterMenu = ({ ignoreRecipes, handleClose }) => {
     const componentRef = useRef(null);
     const { filters, setFilters } = useFilter(); // Access the filter context
 
@@ -230,7 +230,7 @@ const FilterMenu = ({ handleClose }) => {
                 </FormControl>
 
                 {/* Type Filter */}
-                <FormControl component="fieldset" sx={{ mt: 0 }}>
+                {!ignoreRecipes && <FormControl component="fieldset" sx={{ mt: 0 }}>
                     <FormLabel component="legend">Type</FormLabel>
                     <FormGroup>
                         <FormControlLabel
@@ -283,10 +283,10 @@ const FilterMenu = ({ handleClose }) => {
                             />
                         ))}
                     </FormGroup>
-                </FormControl>
+                </FormControl>}
 
                 {/* Tag Filter */}
-                <FormControl component="fieldset" sx={{ mt: 0 }}>
+                {!ignoreRecipes && <FormControl component="fieldset" sx={{ mt: 0 }}>
                     <FormLabel component="legend" sx={{ whiteSpace: "nowrap" }}>Dietary Restrictions</FormLabel>
                     <FormGroup>
                         <FormControlLabel
@@ -339,7 +339,7 @@ const FilterMenu = ({ handleClose }) => {
                             />
                         ))}
                     </FormGroup>
-                </FormControl>
+                </FormControl>}
             </div>
             {/* Confirm and Cancel buttons */}
             <div className="flex flex-row gap-1 w-full h-5 mt-2">

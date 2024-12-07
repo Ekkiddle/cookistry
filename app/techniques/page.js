@@ -1,9 +1,9 @@
 "use client"
 
 import techniques from "@/public/techniques/techniques";
-import NavBar from "../components/navbar";
 import TechniquesList from "../components/techniquesList";
 import { useState } from "react";
+import FilterButton from "../components/FilterButton";
 
 export default function Page() {
   const [sortMode, setSortMode] = useState("level");
@@ -14,11 +14,11 @@ export default function Page() {
 
   return (
     <div className="flex flex-col w-full min-h-screen bg-colour5">
-      <div className="flex justify-between pt-4 pb-4 px-5">
+      <div className="flex flex-wrap justify-between p-4 ">
         <h1 className="text-2xl font-bold text-colour2">
           Techniques
         </h1>
-        <div className="flex my-auto">
+        <div className="flex items-center ml-auto sm:ml-0">
           <label htmlFor="sort" className="pr-1.5 my-auto text-colour1">
             Sort by
           </label>
@@ -26,8 +26,10 @@ export default function Page() {
             <option value="level">Level</option>
             <option value="name">Title</option>
           </select>
+          <FilterButton ignoreRecipes={true} />
         </div>
       </div>
+      <div className="w-full h-1 rounded-lg bg-colour4"></div>
       <div className="z-0">
         <TechniquesList techniques={techniques} sortBy={sortMode} />
       </div>

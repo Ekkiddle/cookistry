@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
+import { CheckmarkContext } from './CheckmarkContext';
 
 function StepsList({ instructions = [], showMedia }) {
-    // Log the incoming instructions to see if they are passed correctly
-    console.log("Received instructions:", instructions);
+    const {existCheckedSteps, setExistCheckedSteps} = useContext(CheckmarkContext)
 
     // State to track the checked status for each step
     const [checkedSteps, setCheckedSteps] = useState(
@@ -21,6 +21,16 @@ function StepsList({ instructions = [], showMedia }) {
             [number]: !prevState[number]
         }));
     };
+
+    useEffect(() => {
+      let stepCheckedCurrently = false;
+      Object.values(checkedSteps).forEach(step => {
+        if (step) stepCheckedCurrently = true;
+      })
+      if (existCheckedSteps !== stepCheckedCurrently) {
+        setExistCheckedSteps(stepCheckedCurrently);
+      }
+    }, [checkedSteps, existCheckedSteps, setExistCheckedSteps]);
 
     // Map over instructions and render list items with checkboxes, instructions, and conditional images
     const listItems = instructions.map((step) => (

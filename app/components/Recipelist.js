@@ -4,6 +4,7 @@ import recipes from '@/public/recipes/recipes'; // Adjust the path as necessary
 import RecipeCard from './RecipeCard';
 import { useFilter } from './Filter';
 import CategoryInfoButton from './CategoryInfoButton';
+import NoResults from './NoResults';
 
 const RecipeList = ({ sortBy }) => {
   const sortOrder = {
@@ -24,13 +25,20 @@ const RecipeList = ({ sortBy }) => {
   // Sort the filtered recipes
   const sortedRecipes = [...filteredRecipes].sort((a, b) => {
       const order = sortOrder[sortBy];
-      return order.indexOf(a[sortBy]) - order.indexOf(b[sortBy]);
+      return order?
+          order.indexOf(a[sortBy]) - order.indexOf(b[sortBy])
+          : a[sortBy].localeCompare(b[sortBy]);
   });
 
   // Function to group recipes by the specified property (type or level)
   const groupRecipes = (recipes, sortBy) => {
       return recipes.reduce((acc, recipe) => {
-          const key = recipe[sortBy]; // Use the specified property to group
+          let key;
+          if (!sortOrder[sortBy]) {
+              key = recipe[sortBy].charAt(0);
+          } else {
+              key = recipe[sortBy]; // Use the specified property to group
+          }
           if (!acc[key]) {
               acc[key] = [];
           }
@@ -45,19 +53,25 @@ const RecipeList = ({ sortBy }) => {
 
   return (
     <div>
-      {Object.keys(groupedRecipes).map((key) => (
-        <div className="flex flex-col mb-8">
-            <div className="sticky flex flex-row justify-between align-center top-24 md:top-12 bg-colour2 z-10 shadow-xl p-2 pl-6">
-                <h2 className="text-colour5 font-bold text-2xl">{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
-                {<CategoryInfoButton cat_name={sortBy} cat_option={key} />}
-            </div>
-            <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
-              {groupedRecipes[key].map((recipe) => (
-                <RecipeCard recipe={recipe} />
-              ))}
-            </div>
-        </div>
-      ))}
+      {(Object.keys(groupedRecipes).length > 0) ? 
+        (Object.keys(groupedRecipes).map((key) => (
+          <div className="flex flex-col mb-8">
+              <div className="sticky flex flex-row justify-between align-center top-24 md:top-12 bg-colour2 z-10 shadow-xl p-2 pl-6">
+                  <h2 className="text-colour5 font-bold text-2xl">{key.charAt(0).toUpperCase() + key.slice(1)}</h2>
+                  {/* only include info button if sortBy has specified categories */}
+                  {sortOrder[sortBy] && <CategoryInfoButton cat_name={sortBy} cat_option={key} />}
+              </div>
+              <div className="grid grid-cols-1 xl:grid-cols-2 z-0 gap-4 p-4">
+                {groupedRecipes[key].map((recipe) => (
+                  <RecipeCard recipe={recipe} />
+                ))}
+              </div>
+          </div>
+        ))
+      ) : (
+        <NoResults includeFilter={false} />
+      )
+    }
     </div>
   );
 };

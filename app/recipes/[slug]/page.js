@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import NavBar from '../../components/navbar';
 import IngredientList from '../../components/IngredientList';
 import StepsList from '../../components/StepsList';
 import RecipeSummary from '../../components/RecipeSummary';
@@ -10,13 +9,15 @@ import IngredientDrawer from "../../components/IngredientDrawer";
 import FeedbackForm from "@/app/components/FeedbackForm";
 import recipes from "@/public/recipes/recipes";
 import { useRouter } from "next/navigation";
+import { CheckmarkContextProvider } from "@/app/components/CheckmarkContext";
+import BackButton from "@/app/components/BackButton";
 
 function Page({ params: paramsPromise }) {
     const params = React.use(paramsPromise);
     const { slug } = params;
     const recipe = recipes.find((recipe) => recipe.slug === slug);
 
-    const router = useRouter();
+    // const router = useRouter();
 
     // State to control drawer visibility
     const [showDrawer, setShowDrawer] = useState(false);
@@ -74,6 +75,7 @@ function Page({ params: paramsPromise }) {
     if (!recipe) return <p>Recipe not found</p>;
 
     return (
+      <CheckmarkContextProvider>
         <div className="w-full flex justify-center px-2 space-y-4 lg:px-8">
 
             {/* Ingredient drawer component */}
@@ -85,12 +87,12 @@ function Page({ params: paramsPromise }) {
             <div className="max-w-5xl mx-auto bg-white mt-4 mx-6 shadow-lg z-10">
 
                 {/* Back to Search Button */}
-                <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
+                {/* <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
                     <u className="flex flex-row items-center mb-0">
                         <IoIosArrowBack /> {"Back to Search"}
                     </u>
-                </button>
-
+                </button> */}
+                <BackButton confirmCheckboxes={true}/>
                 {/* Recipe Summary */}
                 <div className="px-6 py-6 md:pl-12">
                     <RecipeSummary
@@ -131,6 +133,7 @@ function Page({ params: paramsPromise }) {
                 </div>
             </div>
         </div>
+      </CheckmarkContextProvider>
     );
 }
 

@@ -1,4 +1,6 @@
 import CategoryInfoButton from "./CategoryInfoButton"
+import { useFilter } from "./Filter"
+import NoResults from "./NoResults";
 import TechniquesCard from "./techniquesCard"
 
 export default function TechniquesList({techniques, sortBy}) {
@@ -7,28 +9,31 @@ export default function TechniquesList({techniques, sortBy}) {
     name: undefined
   }
 
-  // sort techniques according to sort mode
-  if (SORT_MODES[sortBy] === undefined) {
-    // sort alphabetically by the sortBy field in the techniques list
-    var sorted_techniques = [...techniques].sort((a,b) => {
-      if (a[sortBy] < b[sortBy]) return -1
-      else if (a[sortBy] > b[sortBy]) return 1
-      else return 0
-    })
-  } else {
-    // sort by the categories in that sort mode list
-    var sorted_techniques = [...techniques].sort((a,b) => {
+  // apply filters relevant to techniques
+  const { filters } = useFilter(); // access filter context
+  const filtered_techniques = [...techniques].filter(
+    (item) =>
+      (filters.levels.length === 0 || filters.levels.includes(item.level))
+  )
+  
+  // sort according to sort mode
+  const sorted_techniques = filtered_techniques.sort((a,b) => {
+    if (SORT_MODES[sortBy] === undefined) {
+      // sort alphabetically by the sortBy field
+      return a[sortBy].localeCompare(b[sortBy]);
+    } else {
+      // sort based on the categories and their order in the SORT_MODES list
       return SORT_MODES[sortBy].indexOf(a[sortBy]) - SORT_MODES[sortBy].indexOf(b[sortBy]);
-    })
-  }
+    }
+  })
 
   // group techniques according to sort mode
   const grouped_techniques = sorted_techniques.reduce((acc, technique) => {
-    let group = ""
+    let group;
     if (SORT_MODES[sortBy] === undefined) {
       group = technique[sortBy].charAt(0).toUpperCase();
     } else {
-      group = technique[sortBy];
+      group = technique[sortBy] || "other";
     }
     if (!acc[group]) {
       acc[group] = [];
@@ -39,8 +44,8 @@ export default function TechniquesList({techniques, sortBy}) {
 
   return(
     <div className="flex flex-col gap-3 bg-colour5">
-      {
-        Object.keys(grouped_techniques).map((group => (
+      {(Object.keys(grouped_techniques).length > 0) ?
+        (Object.keys(grouped_techniques).map((group => (
           <div key={group}>
             {/* category divider (sticks to top of page) */}
             <div className="
@@ -67,6 +72,9 @@ export default function TechniquesList({techniques, sortBy}) {
             </div>
           </div>
         )))
+      ) : (
+        <NoResults ignoreRecipes={true} />
+      )
       }
     </div>
   );

@@ -21,13 +21,9 @@ export default function JumpToTop() {
         console.log(btn.current);
         if (e.isIntersecting) {
           // it's becoming less visible
-          console.log("is intersecting");
-          console.log(e.intersectionRatio);
           if (e.intersectionRatio < 0.8) btn.current.style.display = "none";
         } else {
           // it's becoming more visible
-          console.log("not intersecting");
-          console.log(e.intersectionRatio);
           btn.current.style.display = "block";
         }
       })
@@ -49,7 +45,7 @@ export default function JumpToTop() {
         {/* for positioning button components relative to each other */}
         <div onClick={toTop} className="
           group hover:cursor-pointer
-          h-6 md:h-8 translate-x-[-50%]
+          h-6 sm:h-7 md:h-8 translate-x-[-50%]
           flex flex-row items-stretch
         ">
           {/* arrow icon */}
@@ -71,7 +67,7 @@ export default function JumpToTop() {
           <div className=" z-[0]
             px-1
             bg-colour3 rounded-r-md md:rounded-r-full shadow-md shadow-colour1/75
-            text-sm md:text-lg text-colour5
+            text-sm sm:text-base md:text-lg text-colour5
             md:duration-100
             md:scale-x-0 md:group-hover:scale-x-100"
           >
