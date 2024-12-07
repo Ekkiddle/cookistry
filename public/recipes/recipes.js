@@ -128,7 +128,7 @@ const recipes = [
     ],
     instructions: [
       { number: 1, instruction: "Gather all ingredients and preheat the oven to 400 degrees F (200 degrees C).", image: "/recipes/pie-ingredients.webp" },
-      { number: 2, instruction: "To make the pastry crust: Mix flour and salt together in a bowl. Cut in butter with a pastry blender until mixture resembles coarse crumbs.", image: "/recipes/pie-2.webp"},
+      { number: 2, instruction: <div>To make the pastry crust: Mix flour and salt together in a bowl. <TechniquePopup>Fold in</TechniquePopup> butter until mixture resembles coarse crumbs.</div>, image: "/recipes/pie-2.webp"},
       { number: 3, instruction: "Mix in 3 tablespoons water, one at a time, until dough is moist enough to hold together. Add up to 1 more tablespoon water if needed.", image: "/recipes/pie-3.webp"},
       { nubmer: 4, instruction: "Shape dough into a ball with lightly floured hands. Roll dough on a lightly floured surface to a thickness of 1/8 inch.", image: "/recipes/pie-4.webp"},
       { number: 5, instruction: "Place a 9-inch pie pan upside-down on the dough; use a sharp knife to cut a circle of dough 1 ½ inches larger than the pie pan. Remove and discard dough scraps and set pie pan aside.", image: "/recipes/pie-5.webp"},
@@ -177,7 +177,7 @@ const recipes = [
     instructions: [
         {
             number: 1,
-            instruction: <div>Heat olive oil in a skillet over medium heat. <TechniquePopup name="saute">Sauté</TechniquePopup> onion until lightly browned.</div>,
+            instruction: <div>Heat olive oil in a skillet over medium heat. <TechniquePopup name="saute">Saut&eacute;</TechniquePopup> onion until lightly browned.</div>,
             image: "/recipes/curry-1.webp",
         },
         {
