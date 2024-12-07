@@ -5,10 +5,9 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { CheckmarkContext } from "./CheckmarkContext";
 import { createPortal } from "react-dom";
-import { Button } from "@mui/material";
 
 export default function BackButton({confirmCheckboxes}) {
-  const {existCheckedSteps} = useContext(CheckmarkContext);
+  const {existCheckedSteps} = confirmCheckboxes ? useContext(CheckmarkContext) : false;
   const [showConfirmation, setShowConfirmation] = useState(false);
   const popup_ref = useRef(null);
 
