@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { IoIosArrowBack } from "react-icons/io";
 import IngredientList from '../../components/IngredientList';
 import StepsList from '../../components/StepsList';
 import RecipeSummary from '../../components/RecipeSummary';
@@ -85,14 +84,9 @@ function Page({ params: paramsPromise }) {
 
             {/* Creates a background that has all the parts of recipe page on it */}
             <div className="mx-auto sm:w-4/5 bg-white mt-4 mx-8 shadow-lg z-10">
-
-                {/* Back to Search Button */}
-                {/* <button onClick={() => router.back()} className="text-sm text-color4 hover:text-colour3">
-                    <u className="flex flex-row items-center mb-0">
-                        <IoIosArrowBack /> {"Back to Search"}
-                    </u>
-                </button> */}
-                <BackButton confirmCheckboxes={true}/>
+                <div className="px-10">
+                    <BackButton confirmCheckboxes={true}/>
+                </div>
                 {/* Recipe Summary */}
                 <div className="px-6 py-6 md:pl-12">
                     <RecipeSummary

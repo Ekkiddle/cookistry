@@ -14,9 +14,9 @@ function IngredientDrawer({ ingredients }) {
                 {/* Button to open the drawer */}
                 <button
                     onClick={toggleDrawer}
-                    className="fixed top-1/4 left-3 z-20 bg-colour3 text-white text-sm align-text-top 
+                    className="fixed top-1/4 left-0 z-20 bg-colour3 text-white text-sm align-text-top 
                                 font-bold rounded-r-2xl h-32 w-10 flex 
-                                items-center justify-center transform -translate-x-1/2"
+                                items-center justify-center transform-translate-x-1/2"
                 >
                     <div className="rotate-90">Ingredients</div>
                 </button>
