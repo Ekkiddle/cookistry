@@ -62,7 +62,7 @@ const DetailedTechniques = ({ technique }) => {
       )}
 
       {/* rendering Image 1 and 2  */}
-      <div className="flex flex-col gap-4 mt-3 w-full">
+      <div className="grid gap-4 mt-4 items-center ">
         {technique.description.map((desc, index) => ( 
         <div key = {index} className="flex gap-3" >  
             {desc.image1 && (
@@ -71,7 +71,7 @@ const DetailedTechniques = ({ technique }) => {
             alt="Technique step image 1"
             width={300}
             height={200}
-            className="rounded-lg border border-colour2 object-cover w-1/2"
+            className=" rounded-lg object-cover w-full object-cover max-h-40 md:max-h-48"
             />
             )}
 
@@ -81,7 +81,7 @@ const DetailedTechniques = ({ technique }) => {
             alt="Technique step image 2"
             width={300}
             height={200}
-            className="rounded-lg border border-colour2 object-cover w-1/2 "
+            className="  rounded-lg object-cover w-full  object-cover max-h-40 md:max-h-48 "
             />
             )}
           </div>

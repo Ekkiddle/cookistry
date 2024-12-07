@@ -51,7 +51,7 @@ const techniques = [
     imageAlt: "Hand-brushing roasted chicken. Photo by RDNE Stock project from Pexels.com.",
     level: "advanced",
     summary: "A meat cooking technique in which the meat is cooked with its own juices or a preparation such as a sauce or marinade.",
-    main_video: "", // path to video here
+    main_video: "https://www.youtube.com/watch?v=Q_p-MIYuccI", // path to video here
     description: [ // description of technique, broken down into sections
       {
         text: ["Basting is a cooking technique that involves periodically moistening food with liquid while it cooks to add flavor and prevent it from drying out. The liquid can be meat drippings, melted butter, sauces, marinades, or other fats. Basting is commonly used for turkey, chicken, pork, duck, and beef, but can be applied to any type of meat.", 
@@ -83,8 +83,8 @@ const techniques = [
           "To sauté, you'll need a small amount of fat, like butter or oil, in a hot pan with rounded edges. You should make sure the pan is hot before adding the fat. Then, add the food and stir or toss it regularly so that it's evenly exposed to the heat and doesn't burn." 
 
         ],
-        image1: "/techniques/sauteing2.jpeg", // optional
-        image2: "/techniques/sauteing3.jpeg",
+        image1: "/techniques/sauteing3.jpeg", // optional
+        image2: "/techniques/sauteing2.jpeg",
         video: "", // optional
       }
     ],
