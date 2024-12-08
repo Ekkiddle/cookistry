@@ -51,7 +51,7 @@ export default function JumpToTop() {
           {/* arrow icon */}
           <svg viewBox="0 0 10 10"
             className=" z-[1]
-              p-1 md:px-3
+              p-1 md:px-3 w-6 sm:w-7 md:w-12
               stroke-colour5 stroke-1
               bg-colour2 shadow-md shadow-colour1/75
               rounded-l-md md:rounded-full md:group-hover:rounded-r-none
