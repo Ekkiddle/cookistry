@@ -13,7 +13,7 @@ export default function Home() {
   }
 
   return (
-    <main className="flex w-full min-h-screen flex-col bg-colour5">
+    <main className="flex w-full min-h-screen flex-col bg-colour5 mt-4">
       <div className="w-full text-black">
       <div className="flex flex-wrap justify-between py-4 px-5">
         <h1 className="text-2xl font-bold text-colour2">

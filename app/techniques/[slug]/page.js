@@ -9,7 +9,7 @@ const Page = ({params: paramsPromise}) => {
     const technique = techniques.find((technique) => technique.slug === slug);
     
   return (    
-    <div className="flex flex-col w-full min-h-screen mt-5 bg-colour5">
+    <div className="flex flex-col w-full min-h-screen my-4 bg-colour5">
       <DetailedTechniques technique={technique} /> {/* Pass the first technique */}
     </div>
   );
