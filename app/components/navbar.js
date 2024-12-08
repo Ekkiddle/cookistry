@@ -13,10 +13,10 @@ const NavBar = () => {
           <Searchbar />
           <div className="flex flex-row gap-3 items-center justify-evenly w-full md:w-auto mr-5">
             <Link href={"/"}>
-                <u className="text-colour4 sm:text-sm lg:text-base hover:text-colour3">Recipes</u>
+                <u className="text-colour4 sm:text-sm md:text-base hover:text-colour3">Recipes</u>
             </Link>
             <Link href={"/techniques"}>
-                <u className="text-colour4 sm:text-sm lg:text-base hover:text-colour3">Techniques</u>
+                <u className="text-colour4 sm:text-sm md:text-base hover:text-colour3">Techniques</u>
             </Link>
           </div>
         </div>
