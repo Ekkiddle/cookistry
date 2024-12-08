@@ -75,7 +75,7 @@ function Page({ params: paramsPromise }) {
 
     return (
       <CheckmarkContextProvider>
-        <div className="w-full flex justify-center px-6 space-y-4 lg:px-8">
+        <div className="w-full flex justify-center px-6 space-y-4 mt-4 lg:px-8">
 
             {/* Ingredient drawer component */}
             <div className="z-40 px-0">
@@ -83,8 +83,8 @@ function Page({ params: paramsPromise }) {
             </div>
 
             {/* Creates a background that has all the parts of recipe page on it */}
-            <div className="mx-auto sm:w-4/5 bg-white mt-4 mx-8 shadow-lg z-10">
-                <div className="px-10">
+            <div className="mx-auto sm:w-4/5 bg-white mt-2 mx-8 shadow-lg z-10">
+                <div className="px-4 sm:px-10">
                     <BackButton confirmCheckboxes={true}/>
                 </div>
                 {/* Recipe Summary */}

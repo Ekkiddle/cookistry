@@ -72,7 +72,7 @@ const SearchResults = ({ params: paramsPromise }) => {
     const groupedData = groupData(sortedData, sortBy);
 
     return (
-        <div className="">
+        <div className="mt-2">
             {/* Render Grouped Data */}
             {Object.keys(groupedData).length > 0? (
               // grouped data exists (resulst were found), show the list
