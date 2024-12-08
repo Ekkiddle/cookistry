@@ -75,7 +75,7 @@ function FeedbackForm() {
                     />
 
                     {/* Submit button sets textfield visible to false */}
-                    <div className="flex sm:flex-col-reverse sm:justify-start sm:w-full">
+                    <div className="flex sm:flex-col-reverse sm:justify-start sm:w-full mt-4">
                         <Button
                             variant="contained"
                             className="w-28 mt-6 normal-case bg-[#14213d] text-white hover:bg-[#fca311] ml-auto"
