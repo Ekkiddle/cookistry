@@ -51,7 +51,7 @@ export default function JumpToTop() {
           {/* arrow icon */}
           <svg viewBox="0 0 10 10"
             className=" z-[1]
-              p-1 md:px-3
+              p-1 md:px-3 w-6 sm:w-7 md:w-12
               stroke-colour5 stroke-1
               bg-colour2 shadow-md shadow-colour1/75
               rounded-l-md md:rounded-full md:group-hover:rounded-r-none
@@ -65,9 +65,9 @@ export default function JumpToTop() {
           </svg>
           {/* text popup */}
           <div className=" z-[0]
-            px-1
+            px-1 w-max
             bg-colour3 rounded-r-md md:rounded-r-full shadow-md shadow-colour1/75
-            text-sm sm:text-base md:text-lg text-colour5
+            text-sm sm:text-base md:text-lg text-colour5 text-nowrap
             md:duration-100
             md:scale-x-0 md:group-hover:scale-x-100"
           >

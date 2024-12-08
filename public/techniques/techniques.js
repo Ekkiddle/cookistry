@@ -3,7 +3,7 @@ const techniques = [
   {
     name: "Boil water",
     slug: "boil-water",
-    image: "/techniques/boil-water.jpg",
+    image: "/techniques/boil-water.jpeg",
     imageAlt: "Boiling water in pot on burner. Photo by Anna Shvets from Pexels.com.",
     level: "beginner",
     summary: "Boiling water involves selecting the right pot size, possibly salting the water, and using the right temperature.",
@@ -16,7 +16,7 @@ const techniques = [
           "2. Place the pan on your stovetop and turn the burner to the highest setting.",
           "3. Let the water come to a full rolling boil (when the bubbles are rapidly breaking the surface)",
         ],
-        image1: "/techniques/boil-water.jpg",// optional
+        image1: "/techniques/boil-water.jpeg",// optional
         image2: "/techniques/waterBoiling2.jpeg",
         video: "", // optional
       }
@@ -29,7 +29,7 @@ const techniques = [
   {
     name: "Fold in",
     slug : "fold-in",
-    image: "/techniques/fold-in.jpg",
+    image: "/techniques/fold-in.jpeg",
     imageAlt: "A person mixing dough using a wooden spatula in a stainless bowl. Photo by Ron Lach from Pexels.com.",
     level: "intermediate",
     summary: "A technique for carefully combining two substances of different thickness and weight into one (relatively) smooth mixture.",
@@ -38,7 +38,7 @@ const techniques = [
       {
         text:  ["Folding is a a baking technique that involves gently mixing a lighter, airier ingredient into a heavier, denser ingredient. The goal is to incorporate the delicate ingredients without deflating the batter and to preserve the structure and lightness of the mixture",
         "To fold ingredients into a batter, you can use a spatula or wooden spoon to scoop around the mixture and then flip the spoon over to tuck in the ingredients. You can also rotate the bowl to make sure you get the ingredients from the whole perimeter. It's important to be gentle so you don't knock out air bubbles.",],
-        image1: "/techniques/fold-in.jpg",
+        image1: "/techniques/fold-in.jpeg",
         image2: "/techniques/Fold-in2.jpeg", // optional
       }
     ],

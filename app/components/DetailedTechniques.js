@@ -1,9 +1,10 @@
 
+
+
 "use client"
 
-// components/DetailedTechniques.js
 import React from "react";
-import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon
+import { IoIosArrowBack } from 'react-icons/io'; // Import the back arrow icon 
 
 import { useRouter } from "next/navigation";
 
@@ -37,30 +38,32 @@ const DetailedTechniques = ({ technique, isPopup }) => {
           <h1 className="text-3xl font-bold text-colour1">{technique.name}</h1>
         </div>
 
-        <h2 className="text-lg font-semibold text-colour3">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
-
-        {/* The combined text to make it look like a paragraph ( maybe will find another way to do it ) */}
-        {technique.description.map((section, index) => (
-
-          <div key={index} className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
-            <h1 className="text-colour1 font-bold" > Summary</h1>
-            {section.text.map((text, textIndex) => (
-              <p key={textIndex} className="text-gray-700">{text}</p>
-            ))}
-          </div>
-        ))}
-
-        {/* video */}
-        {technique.main_video && (
-          <div className="mt-4">
-            <iframe
-              width="100%"
-              height="315"
-              src={technique.main_video.replace("watch?v=", "embed/")}
-              title="Main Video"
-            ></iframe>
-          </div>
-        )}
+          {/* Display skill level   */}
+      <h2 className="text-lg font-semibold text-colour3">Skill Level: <span className="text-colour2">{technique.level}</span></h2>
+      
+      
+       {/* Summary + text */}
+      {technique.description.map((section, index) =>(
+        
+        <div key ={index} className="flex flex-col gap-4 mt-4 p-4 bg-colour4 rounded-md shadow-md">
+          <h1 className="text-colour1 font-bold" > Summary</h1>
+          {section.text.map((text, textIndex) => (
+            <p key={textIndex} className="text-gray-700">{text}</p>
+          ))}
+        </div>
+      ))}
+      
+      {/* video */}
+      {technique.main_video && (
+        <div className="mt-4">
+          <iframe
+            width="100%"
+            height="315"
+            src={technique.main_video.replace("watch?v=", "embed/")} 
+            title="Main Video"
+          ></iframe>
+        </div>
+      )}
 
         {/* rendering Image 1 and 2  */}
         <div className="grid gap-4 mt-4 items-center ">
@@ -98,32 +101,35 @@ const DetailedTechniques = ({ technique, isPopup }) => {
 
               // Find the matching recipe in the recipes array
 
-              // Used ChatGpt for help , i wasn't familiar with how "slugs" work , so i made sure to ask chatgpt to help me understand and debug 
-              // it helped me debug and find a way to get the recipe name from recipe.js @public 
-              const matchingRecipe = recipes.find(r => r.name === recipe.name);
+      // Citations ; 
+    // Used ChatGpt for help , i wasn't familiar with how "slugs" work , so i made sure to ask chatgpt to help me understand and debug 
+    // it helped me debug and find a way to get the recipe name from recipe.js @public 
+        const matchingRecipe = recipes.find(r => r.name === recipe.name);
 
-              // If a matching recipe is found, use its slug
 
+        // ------------- --------- ----- end of chatgpt help -- ------------ ---------- ------- 
+    
+      // if the slug is found,  then display the recipe as a link     
+      return (
+        <li key={index} className="mt-1">
+          {matchingRecipe ? (
+              <Link   
+              className={`text-blue-500 hover:text-blue-700 underline ${!matchingRecipe ? "cursor-not-allowed text-gray-400" : ""}`}
+              href={`/recipes/${matchingRecipe.slug}`}
+            >
+              {recipe.name}
+            </Link>
 
-              return (
-                <li key={index} className="mt-1">
-                  {matchingRecipe ? (
-                    <Link
-                      className={`text-blue-500 hover:text-blue-700 underline ${!matchingRecipe ? "cursor-not-allowed text-gray-400" : ""}`}
-                      href={`/recipes/${matchingRecipe.slug}`}
-                    >
-                      {recipe.name}
-                    </Link>
+          ) : (
 
-                  ) : (
-                    <span className="text-gray-500">{recipe.name}</span>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
+            // if the slug is not found , just display the name without a link 
+            <span className="text-gray-500">{recipe.name}</span>
+          )}
+        </li>
+      );
+    })}
+      </ul>
+    </div>
     </div>
   );
 };
